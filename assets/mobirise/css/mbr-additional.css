@@ -1187,6 +1187,26 @@ a {
 .cid-uqMpfdCDE6 .mbr-section-btn {
   color: #fcf6c4;
 }
+.cid-uzY7tPKoQW {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  background-color: #f7f7f7;
+}
+.cid-uzY7tPKoQW .mbr-fallback-image.disabled {
+  display: none;
+}
+.cid-uzY7tPKoQW .mbr-fallback-image {
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+.cid-uzY7tPKoQW .row {
+  flex-direction: row-reverse;
+}
 .cid-uoV4XGV1hx {
   padding-top: 6rem;
   padding-bottom: 6rem;
