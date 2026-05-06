@@ -162,7 +162,22 @@
     .poster-placeholder .ph-icon{font-size:3rem;opacity:.4;}
     .poster-placeholder p{font-size:.85rem;line-height:1.5;opacity:.5;}
 
-    /* LIGHTBOX */
+    /* iframe poster preview */
+    .poster-card--html{ cursor:pointer; }
+    .poster-iframe-wrap{
+      width:100%; overflow:hidden;
+      aspect-ratio:794/1123;
+      pointer-events:none;
+      background:#0c0c18;
+    }
+    .poster-iframe-wrap iframe{
+      width:794px; height:1123px;
+      transform:scale(0.378);
+      transform-origin:top left;
+      border:none; display:block;
+    }
+
+    /* LIGHTBOX – obrazki */
     .lightbox{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.96);align-items:center;justify-content:center;}
     .lightbox.open{display:flex;}
     .lb-img{max-width:92vw;max-height:90vh;object-fit:contain;border-radius:8px;display:block;}
@@ -173,6 +188,13 @@
     .lb-prev{left:1.25rem;}
     .lb-next{right:1.25rem;}
     .lb-counter{position:absolute;bottom:1.25rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.4);font-size:.8rem;letter-spacing:2px;}
+
+    /* LIGHTBOX – iframe (HTML plakaty) */
+    .lb-html{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.96);align-items:center;justify-content:center;}
+    .lb-html.open{display:flex;}
+    .lb-html-close{position:absolute;top:1.25rem;right:1.5rem;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:1.6rem;line-height:1;width:44px;height:44px;border-radius:50%;cursor:pointer;transition:background .2s;display:flex;align-items:center;justify-content:center;z-index:1;}
+    .lb-html-close:hover{background:rgba(255,255,255,.22);}
+    .lb-html iframe{width:min(794px,92vw);height:min(1123px,90vh);border:none;border-radius:8px;display:block;}
 
     /* CTA SECTION */
     .cta-section{padding:5rem 1.5rem;background:var(--dark2);text-align:center;}
@@ -298,11 +320,14 @@
              </div>
         ══════════════════════════════════════════ -->
 
-        <!-- PLACEHOLDER — zniknie gdy dodasz prawdziwe plakaty -->
-        <div class="poster-placeholder">
-          <div class="ph-icon">🖼️</div>
-          <p>Plakat pojawi się<br>wkrótce</p>
+        <!-- PLAKAT: plan zajęć (HTML) -->
+        <div class="poster-card poster-card--html" data-href="plakat.html" title="Plan zajęć – kliknij, aby otworzyć">
+          <div class="poster-iframe-wrap">
+            <iframe src="plakat.html" scrolling="no" tabindex="-1"></iframe>
+          </div>
         </div>
+
+        <!-- PLACEHOLDER — zniknie gdy dodasz prawdziwe plakaty -->
         <div class="poster-placeholder">
           <div class="ph-icon">🖼️</div>
           <p>Plakat pojawi się<br>wkrótce</p>
@@ -316,6 +341,12 @@
     </div>
   </div>
 </section>
+
+<!-- LIGHTBOX HTML (iframe) -->
+<div class="lb-html" id="lbHtml">
+  <button class="lb-html-close" id="lbHtmlClose">✕</button>
+  <iframe id="lbHtmlFrame" src="" scrolling="auto"></iframe>
+</div>
 
 <!-- LIGHTBOX dla plakatów -->
 <div class="lightbox" id="lightbox">
@@ -377,6 +408,16 @@
   function next() { current = (current + 1) % posterImages.length; lbImg.src = posterImages[current]; lbCtr.textContent = `${current + 1} / ${posterImages.length}`; }
 
   posterCards.forEach(el => el.addEventListener('click', () => openLb(+el.dataset.idx)));
+  const lbHtml      = document.getElementById('lbHtml');
+  const lbHtmlFrame = document.getElementById('lbHtmlFrame');
+  function openHtmlLb(src) { lbHtmlFrame.src = src; lbHtml.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeHtmlLb()   { lbHtml.classList.remove('open'); document.body.style.overflow = ''; lbHtmlFrame.src = ''; }
+  document.getElementById('lbHtmlClose').onclick = closeHtmlLb;
+  lbHtml.addEventListener('click', e => { if (e.target === lbHtml) closeHtmlLb(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && lbHtml.classList.contains('open')) closeHtmlLb(); });
+  document.querySelectorAll('.poster-card--html').forEach(el =>
+    el.addEventListener('click', () => openHtmlLb(el.dataset.href))
+  );
   document.getElementById('lbClose').onclick = closeLb;
   document.getElementById('lbPrev').onclick  = prev;
   document.getElementById('lbNext').onclick  = next;
