@@ -1,123 +1,184 @@
 <!DOCTYPE html>
-<html  >
+<html lang="pl">
 <head>
-  <!-- Site made with Mobirise Website Builder v5.9.18, https://mobirise.com -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v5.9.18, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="assets/images/icon-128x125.png" type="image/x-icon">
-  <meta name="description" content="">
-  
-  
-  <title>Regulamin</title>
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/animatecss/animate.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <meta name="description" content="Regulamin zajęć sportowych – Akrokick">
+  <title>Regulamin · Akrokick</title>
   <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=gGGzoo"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=gGGzoo" type="text/css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--red:#C0392B;--dark:#0f0f1a;--dark2:#181828;--gold:#F5A623;--text:#1e1e2e;--gray:#6c757d;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter Tight',sans-serif;color:var(--text);background:#fff;}
 
-  
-  
-  
+    #nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.1rem 2rem;background:rgba(15,15,26,.96);backdrop-filter:blur(14px);box-shadow:0 2px 24px rgba(0,0,0,.35);}
+    .nav-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+    .nav-brand{font-size:1.55rem;font-weight:900;color:#fff;text-decoration:none;}
+    .nav-brand span{color:var(--red);}
+    .nav-links{display:flex;gap:1.75rem;list-style:none;align-items:center;}
+    .nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-weight:600;font-size:.82rem;letter-spacing:1px;text-transform:uppercase;transition:color .2s;}
+    .nav-links a:hover{color:var(--gold);}
+    .nav-social{display:flex;gap:.75rem;}
+    .nav-social a{color:rgba(255,255,255,.6);font-size:1.1rem;transition:color .2s;}
+    .nav-social a:hover{color:var(--gold);}
+    .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.3rem;}
+    .burger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;}
+    #mob-menu{display:none;position:fixed;inset:0;z-index:999;background:rgba(15,15,26,.97);flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;}
+    #mob-menu.open{display:flex;}
+    #mob-menu a{color:#fff;text-decoration:none;font-size:1.5rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;}
+    #mob-close{position:absolute;top:1.5rem;right:1.75rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;}
+
+    .page-header{padding:8rem 1.5rem 4rem;background:linear-gradient(135deg,var(--dark) 0%,var(--dark2) 60%,#0a0a1a 100%);text-align:center;position:relative;overflow:hidden;}
+    .page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(192,57,43,.15) 0%,transparent 70%);}
+    .page-header-inner{position:relative;z-index:1;}
+    .page-header .back{display:inline-flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.5);text-decoration:none;font-size:.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5rem;transition:color .2s;}
+    .page-header .back:hover{color:var(--gold);}
+    .page-header h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:.75rem;}
+    .page-header .accent-line{width:60px;height:4px;background:var(--red);border-radius:2px;margin:.75rem auto 0;}
+
+    .content-wrap{max-width:860px;margin:0 auto;padding:4rem 1.5rem 5rem;}
+
+    .legal-section{margin-bottom:2.5rem;}
+    .legal-section h2{font-size:1.05rem;font-weight:800;color:var(--dark);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid rgba(192,57,43,.15);display:flex;align-items:center;gap:.75rem;}
+    .legal-section h2 .num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--red);color:#fff;border-radius:50%;font-size:.75rem;font-weight:800;flex-shrink:0;}
+    .legal-section p,.legal-section li{font-size:.95rem;line-height:1.8;color:#444;margin-bottom:.55rem;}
+    .legal-section ul,.legal-section ol{padding-left:1.5rem;}
+    .legal-section li{margin-bottom:.35rem;}
+    .legal-section strong{color:var(--dark);font-weight:700;}
+
+    .rule-item{background:#f8f9fa;border-radius:10px;padding:1rem 1.25rem;margin-bottom:.6rem;border-left:3px solid rgba(192,57,43,.3);font-size:.93rem;line-height:1.7;color:#444;}
+    .rule-item strong{color:var(--dark);}
+
+    footer{background:var(--dark);padding:2.25rem 0;text-align:center;}
+    .footer-links{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:.85rem;}
+    .footer-links a{color:rgba(255,255,255,.35);text-decoration:none;font-size:.78rem;transition:color .2s;}
+    .footer-links a:hover,.footer-links a.active{color:rgba(255,255,255,.75);}
+    footer p{color:rgba(255,255,255,.25);font-size:.8rem;}
+
+    @media(max-width:768px){.nav-links,.nav-social{display:none!important;}.burger{display:flex;}}
+  </style>
 </head>
 <body>
-  
-  <section data-bs-version="5.1" class="menu menu2 cid-uoUXhXCdNt" once="menu" id="menu2-2t">
-    
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container-fluid">
-            <div class="navbar-brand">
-                
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7">Akrokick</a></span>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html">Strona główna</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="galeria.html">Galeria</a></li>
-                    
-                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#features16-1w">Prowadzący</a>
-                    </li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#timeline03-20">Zajęcia</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#contacts1-1z">Kontakt</a></li></ul>
-                <div class="icons-menu">
-                    <a class="iconfont-wrapper" href="https://www.facebook.com/profile.php?id=61567168265481">
-                        <span class="p-2 mbr-iconfont socicon-facebook socicon"></span>
-                    </a>
-                    <a class="iconfont-wrapper" href="https://www.instagram.com/akrokick/" target="_blank">
-                        <span class="p-2 mbr-iconfont socicon-instagram socicon"></span>
-                    </a>
-                    
-                    
-                </div>
-                
-            </div>
-        </div>
-    </nav>
-</section>
 
-<section data-bs-version="5.1" class="article07 cid-uOYo8ipOeJ" id="article07-2v">
-  
-
-  
-  
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="card col-md-12 col-lg-10">
-        <div class="card-wrapper">
-          <h3 class="card-title mbr-fonts-style mbr-white mt-3 mb-4 display-5"><strong>REGULAMIN ZAJĘĆ SPORTOWYCH</strong></h3>
-          <div class="row card-box align-left">
-            <div class="item features-without-image col-12 active">
-              <div class="item-wrapper">
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-3 display-5"></h4>
-                <p class="mbr-text mbr-fonts-style display-7"><strong>1. POSTANOWIENIA OGÓLNE</strong><br>&nbsp;1.1. Regulamin określa zasady uczestnictwa w zajęciach sportowych prowadzonych przez AKROKICK. <br>1.2. Uczestnikiem zajęć może być każda osoba, która dokonała zapisu, zaakceptowała regulamin i uiściła opłatę. <br>1.3. Zapisując dziecko na zajęcia, rodzic/opiekun prawny potwierdza brak przeciwwskazań zdrowotnych do uczestnictwa.<br><br><strong>2. ORGANIZACJA ZAJĘĆ</strong><br>2.1. Zajęcia odbywają się zgodnie z ustalonym harmonogramem. <br>2.2. Organizator zastrzega sobie prawo do zmian w grafiku (np. zmiana instruktora, godziny, sali) z ważnych przyczyn. <br>2.3. Zajęcia mogą być odwołane przez organizatora z powodów losowych – wtedy oferowany jest termin zastępczy. <br>2.4. W przypadku niskiej frekwencji (np. poniżej 3 osób) organizator może zawiesić lub zakończyć grupę.<br><br><strong>3. ZASADY UCZESTNICTWA</strong><br>3.1. Uczestnicy zobowiązani są do punktualnego stawiennictwa, odpowiedniego stroju i zmiennego obuwia sportowego (jeśli dotyczy). <br>3.2. Ze względów bezpieczeństwa, osoby spóźnione o więcej niż 10 minut mogą nie zostać dopuszczone do udziału w zajęciach. <br>3.3. Uczestnik (lub jego opiekun) ponosi odpowiedzialność za szkody materialne powstałe z jego winy. <br>3.4. Organizator nie ponosi odpowiedzialności za rzeczy pozostawione w szatni lub sali.<br><br><strong>4. BEZPIECZEŃSTWO I ZDROWIE</strong><br>4.1. Zajęcia mają charakter fizyczny – uczestnik zobowiązany jest poinformować instruktora o kontuzjach, urazach lub przeciwwskazaniach. <br>4.2. W przypadku złego samopoczucia uczestnik powinien zrezygnować z udziału w zajęciach. 4.3. Uczestnictwo w zajęciach odbywa się na własną odpowiedzialność (lub odpowiedzialność opiekuna). <br>4.4. Organizator nie ponosi odpowiedzialności za kontuzje wynikające z braku stosowania się do poleceń instruktora.<br><br><strong>5. PŁATNOŚCI I NIEOBECNOŚCI</strong><br>5.1. Zajęcia są płatne z góry, w formie karnetu miesięcznego, lub jednorazowo na każdych zajęciach (zgodnie z cennikiem). <br>5.2. Brak płatności w terminie może skutkować skreśleniem z listy uczestników.<br><br><br><strong>6. ODWOŁYWANIE I ODPRACOWYWANIE</strong><br>6.1. Odrabianie zajęć możliwe jest tylko w ramach dostępnych grup i po wcześniejszym uzgodnieniu. <br>6.2. Zajęcia grupowe nie są przesuwane ani odrabiane indywidualnie. <br>6.3. Zajęcia odwołane przez organizatora są przenoszone na inny termin lub rozliczane na poczet kolejnych opłat.<br><br><strong>7. RODO I WIZERUNEK</strong><br>7.1. Dane osobowe uczestników przetwarzane są zgodnie z obowiązującymi przepisami RODO w celu realizacji zajęć. <br>7.2. Organizator może wykonywać zdjęcia lub nagrania z zajęć w celach promocyjnych – brak zgody należy zgłosić pisemnie.<br><br><strong>8. POSTANOWIENIA KOŃCOWE</strong><br>8.1. Organizator zastrzega sobie prawo do wprowadzenia zmian w regulaminie. <br>8.2. Przystąpienie do zajęć jest równoznaczne z akceptacją regulaminu<br></p>
-              </div>
-            </div>
-            
-            
-            
-          </div>
-          
-        </div>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Akro<span>kick</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">O nas</a></li>
+      <li><a href="index.html#coaches">Prowadzący</a></li>
+      <li><a href="index.html#schedule">Zajęcia</a></li>
+      <li><a href="index.html#contact">Kontakt</a></li>
+      <li><a href="galeria.html">Galeria</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:.9rem">
+      <div class="nav-social">
+        <a href="https://www.facebook.com/profile.php?id=61567168265481" target="_blank"><span class="socicon-facebook socicon"></span></a>
+        <a href="https://www.instagram.com/akrokick/" target="_blank"><span class="socicon-instagram socicon"></span></a>
       </div>
+      <button class="burger" id="burgerBtn"><span></span><span></span><span></span></button>
     </div>
   </div>
-</section>
+</nav>
 
-<section data-bs-version="5.1" class="footer3 cid-uOYmImytC7" once="footers" id="footer03-2u">
+<div id="mob-menu">
+  <button id="mob-close">✕</button>
+  <a href="index.html">Strona główna</a>
+  <a href="index.html#coaches">Prowadzący</a>
+  <a href="index.html#schedule">Zajęcia</a>
+  <a href="index.html#contact">Kontakt</a>
+  <a href="galeria.html">Galeria</a>
+</div>
 
-        
+<div class="page-header">
+  <div class="page-header-inner">
+    <a href="index.html" class="back">← Powrót do strony głównej</a>
+    <h1>Regulamin zajęć sportowych</h1>
+    <div class="accent-line"></div>
+  </div>
+</div>
 
-    
+<div class="content-wrap">
 
-    <div class="container">
-        <div class="row">
-            <div class="row-links">
-                <ul class="header-menu">
-                  
-                  
-                  
-                  
-                <li class="header-menu-item mbr-fonts-style display-5"><a href="politykaprywatnosci.html" class="text-success">Polityka Prywatności</a></li><li class="header-menu-item mbr-fonts-style display-5"><a href="page4.html" class="text-success text-primary">Regulamin</a></li><li class="header-menu-item mbr-fonts-style display-5"><a href="page3.html" class="text-success">RODO</a></li><li class="header-menu-item mbr-fonts-style display-5"><a href="page5.html" class="text-success text-primary">Standardy Ochrony Małoletnich</a></li></ul>
-              </div>
+  <div class="legal-section">
+    <h2><span class="num">1</span> Postanowienia ogólne</h2>
+    <div class="rule-item">1.1. Regulamin określa zasady uczestnictwa w zajęciach sportowych prowadzonych przez <strong>AKROKICK</strong>.</div>
+    <div class="rule-item">1.2. Uczestnikiem zajęć może być każda osoba, która dokonała zapisu, zaakceptowała regulamin i uiściła opłatę.</div>
+    <div class="rule-item">1.3. Zapisując dziecko na zajęcia, rodzic/opiekun prawny potwierdza brak przeciwwskazań zdrowotnych do uczestnictwa.</div>
+  </div>
 
-            
-            
-        </div>
+  <div class="legal-section">
+    <h2><span class="num">2</span> Organizacja zajęć</h2>
+    <div class="rule-item">2.1. Zajęcia odbywają się zgodnie z ustalonym harmonogramem.</div>
+    <div class="rule-item">2.2. Organizator zastrzega sobie prawo do zmian w grafiku (zmiana instruktora, godziny, sali) z ważnych przyczyn.</div>
+    <div class="rule-item">2.3. Zajęcia odwołane przez organizatora są przenoszone na inny termin lub rozliczane na poczet kolejnych opłat.</div>
+    <div class="rule-item">2.4. W przypadku niskiej frekwencji (poniżej 3 osób) organizator może zawiesić lub zakończyć grupę.</div>
+  </div>
+
+  <div class="legal-section">
+    <h2><span class="num">3</span> Zasady uczestnictwa</h2>
+    <div class="rule-item">3.1. Uczestnicy zobowiązani są do punktualnego stawiennictwa, odpowiedniego stroju i zmiennego obuwia sportowego.</div>
+    <div class="rule-item">3.2. Osoby spóźnione o więcej niż 10 minut mogą nie zostać dopuszczone do udziału w zajęciach ze względów bezpieczeństwa.</div>
+    <div class="rule-item">3.3. Uczestnik (lub jego opiekun) ponosi odpowiedzialność za szkody materialne powstałe z jego winy.</div>
+    <div class="rule-item">3.4. Organizator nie ponosi odpowiedzialności za rzeczy pozostawione w szatni lub sali.</div>
+  </div>
+
+  <div class="legal-section">
+    <h2><span class="num">4</span> Bezpieczeństwo i zdrowie</h2>
+    <div class="rule-item">4.1. Uczestnik zobowiązany jest poinformować instruktora o kontuzjach, urazach lub przeciwwskazaniach zdrowotnych.</div>
+    <div class="rule-item">4.2. W przypadku złego samopoczucia uczestnik powinien zrezygnować z udziału w zajęciach.</div>
+    <div class="rule-item">4.3. Uczestnictwo odbywa się na własną odpowiedzialność lub odpowiedzialność opiekuna prawnego.</div>
+    <div class="rule-item">4.4. Organizator nie ponosi odpowiedzialności za kontuzje wynikające z niestosowania się do poleceń instruktora.</div>
+  </div>
+
+  <div class="legal-section">
+    <h2><span class="num">5</span> Płatności i nieobecności</h2>
+    <div class="rule-item">5.1. Zajęcia są płatne z góry – w formie karnetu miesięcznego lub jednorazowo (zgodnie z cennikiem).</div>
+    <div class="rule-item">5.2. Brak płatności w terminie może skutkować skreśleniem z listy uczestników.</div>
+  </div>
+
+  <div class="legal-section">
+    <h2><span class="num">6</span> Odwoływanie i odpracowywanie</h2>
+    <div class="rule-item">6.1. Odrabianie zajęć możliwe jest tylko w ramach dostępnych grup i po wcześniejszym uzgodnieniu z organizatorem.</div>
+    <div class="rule-item">6.2. Zajęcia grupowe nie są przesuwane ani odrabiane indywidualnie.</div>
+    <div class="rule-item">6.3. Zajęcia odwołane przez organizatora są przenoszone na inny termin lub rozliczane na poczet kolejnych opłat.</div>
+  </div>
+
+  <div class="legal-section">
+    <h2><span class="num">7</span> RODO i wizerunek</h2>
+    <div class="rule-item">7.1. Dane osobowe uczestników przetwarzane są zgodnie z przepisami RODO w celu realizacji zajęć.</div>
+    <div class="rule-item">7.2. Organizator może wykonywać zdjęcia lub nagrania z zajęć w celach promocyjnych – brak zgody należy zgłosić pisemnie przed rozpoczęciem zajęć.</div>
+  </div>
+
+  <div class="legal-section">
+    <h2><span class="num">8</span> Postanowienia końcowe</h2>
+    <div class="rule-item">8.1. Organizator zastrzega sobie prawo do wprowadzenia zmian w regulaminie z powiadomieniem uczestników.</div>
+    <div class="rule-item">8.2. <strong>Przystąpienie do zajęć jest równoznaczne z akceptacją niniejszego regulaminu.</strong></div>
+  </div>
+
+</div>
+
+<footer>
+  <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem">
+    <div class="footer-links">
+      <a href="politykaprywatnosci.html">Polityka Prywatności</a>
+      <a href="page4.html" class="active">Regulamin</a>
+      <a href="page3.html">RODO</a>
+      <a href="page5.html">Standardy Ochrony Małoletnich</a>
     </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
-  
- <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
-    <input name="animation" type="hidden">
-  </body>
+    <p>© 2025 Akrokick · Wiktoria Pawlusek &amp; Hubert Kozera</p>
+  </div>
+</footer>
+
+<script>
+  const mob=document.getElementById('mob-menu');
+  document.getElementById('burgerBtn').onclick=()=>mob.classList.add('open');
+  document.getElementById('mob-close').onclick=()=>mob.classList.remove('open');
+  mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('open')));
+</script>
+</body>
 </html>

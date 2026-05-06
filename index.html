@@ -1,472 +1,783 @@
 <!DOCTYPE html>
-<html  >
+<html lang="pl">
 <head>
- 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v5.9.18, mobirise.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/icon-128x125.png" type="image/x-icon">
-  <meta name="description" content="Zajęcia sportowe z elementami akrobatyki, gimnastyki i kickboxingu">
-  
-  
+  <meta name="description" content="Zajęcia sportowe z elementami akrobatyki, gimnastyki i kickboxingu dla dzieci i młodzieży.">
   <title>Akrokick</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/animatecss/animate.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=62Qlqw"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=62Qlqw" type="text/css">
 
-  
-  
-  
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red:      #C0392B;
+      --red-dark: #962d22;
+      --gold:     #F5A623;
+      --dark:     #0f0f1a;
+      --dark2:    #181828;
+      --light:    #f8f9fa;
+      --gray:     #6c757d;
+      --text:     #1e1e2e;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter Tight', sans-serif;
+      color: var(--text);
+      overflow-x: hidden;
+      background: var(--dark);
+    }
+
+    /* ── NAV ───────────────────────────────────── */
+    #nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      padding: 1.1rem 2rem;
+      transition: background 0.35s, padding 0.35s, box-shadow 0.35s;
+    }
+    #nav.solid {
+      background: rgba(15,15,26,0.96);
+      backdrop-filter: blur(14px);
+      padding: 0.65rem 2rem;
+      box-shadow: 0 2px 24px rgba(0,0,0,.35);
+    }
+    .nav-inner {
+      max-width: 1180px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-size: 1.55rem; font-weight: 900;
+      color: #fff; text-decoration: none; letter-spacing: .5px;
+    }
+    .nav-brand span { color: var(--red); }
+    .nav-links {
+      display: flex; gap: 1.75rem; list-style: none; align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.8); text-decoration: none;
+      font-weight: 600; font-size: .82rem;
+      letter-spacing: 1px; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-right { display: flex; align-items: center; gap: .9rem; }
+    .nav-social a {
+      color: rgba(255,255,255,.6); font-size: 1.1rem; transition: color .2s;
+    }
+    .nav-social a:hover { color: var(--gold); }
+
+    /* hamburger */
+    .burger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: .3rem;
+    }
+    .burger span {
+      display: block; width: 24px; height: 2px;
+      background: #fff; border-radius: 2px; transition: .3s;
+    }
+
+    /* mobile menu */
+    #mob-menu {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(15,15,26,.97);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 2.2rem;
+    }
+    #mob-menu.open { display: flex; }
+    #mob-menu a {
+      color: #fff; text-decoration: none;
+      font-size: 1.5rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 2px;
+      transition: color .2s;
+    }
+    #mob-menu a:hover { color: var(--gold); }
+    #mob-close {
+      position: absolute; top: 1.5rem; right: 1.75rem;
+      background: none; border: none; color: #fff;
+      font-size: 2rem; cursor: pointer; line-height: 1;
+    }
+
+    /* ── HERO ──────────────────────────────────── */
+    .hero {
+      min-height: 100vh; position: relative;
+      display: flex; align-items: center;
+      overflow: hidden;
+      background: var(--dark);
+    }
+    /* zdjęcie pozycjonowane po prawej, naturalne proporcje */
+    .hero-bg-img {
+      position: absolute;
+      right: 0; top: 0;
+      height: 100%; width: 58%;
+      object-fit: cover;
+      object-position: top center;
+      filter: brightness(.38);
+      display: block;
+    }
+    /* gradient: ciemny po lewej (tekst), przeźroczysty po prawej (zdjęcie) */
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right,
+        var(--dark) 28%,
+        rgba(15,15,26,.93) 46%,
+        rgba(15,15,26,.55) 68%,
+        rgba(15,15,26,.4) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 7rem 2rem 4rem 6vw;
+      display: flex; flex-direction: column; align-items: flex-start;
+      max-width: 680px;
+    }
+    .hero-logo {
+      width: 130px; height: 130px;
+      object-fit: cover; border-radius: 50%;
+      border: 3px solid rgba(255,255,255,.18);
+      margin-bottom: 1.75rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,.5);
+    }
+    .hero-title {
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      font-weight: 900; color: #fff;
+      line-height: 1; letter-spacing: -2px;
+      margin-bottom: 1.1rem;
+    }
+    .hero-title .r { color: var(--red); }
+    .hero-sub {
+      font-size: clamp(.95rem, 2.2vw, 1.15rem);
+      color: rgba(255,255,255,.72);
+      max-width: 480px; line-height: 1.75;
+      font-weight: 300; margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-red {
+      padding: .85rem 2.1rem;
+      background: var(--red); color: #fff;
+      border: none; border-radius: 50px;
+      font-weight: 700; font-size: .9rem;
+      text-decoration: none; text-transform: uppercase; letter-spacing: .8px;
+      transition: all .25s;
+    }
+    .btn-red:hover {
+      background: var(--red-dark); color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(192,57,43,.4);
+    }
+    .btn-ghost {
+      padding: .85rem 2.1rem;
+      background: transparent; color: #fff;
+      border: 2px solid rgba(255,255,255,.45);
+      border-radius: 50px;
+      font-weight: 600; font-size: .9rem;
+      text-decoration: none; text-transform: uppercase; letter-spacing: .8px;
+      transition: all .25s;
+    }
+    .btn-ghost:hover {
+      border-color: #fff; color: #fff;
+      background: rgba(255,255,255,.1);
+      transform: translateY(-3px);
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2.2rem; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.35);
+      font-size: .7rem; letter-spacing: 3px;
+      text-transform: uppercase;
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      animation: bob 2.2s ease-in-out infinite;
+    }
+    .hero-scroll::after {
+      content: ''; width: 1px; height: 36px;
+      background: rgba(255,255,255,.25);
+    }
+    @keyframes bob {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(7px); }
+    }
+
+    /* ── SHARED SECTION STYLES ────────────────── */
+    section { scroll-margin-top: 72px; }
+    .sec-pad { padding: 5.5rem 0; }
+    .label {
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: 3.5px; text-transform: uppercase;
+      color: var(--red); margin-bottom: .65rem;
+    }
+    .label.gold { color: var(--gold); }
+    .sec-title {
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      font-weight: 800; line-height: 1.15;
+      margin-bottom: .9rem;
+    }
+    .sec-sub {
+      font-size: 1rem; color: var(--gray);
+      line-height: 1.75; max-width: 640px;
+    }
+
+    /* ── OFFERS ────────────────────────────────── */
+    .offers { background: var(--dark2); }
+    .offer-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px; padding: 2.5rem 1.75rem;
+      text-align: center; height: 100%;
+      transition: all .3s;
+    }
+    .offer-card:hover {
+      background: rgba(255,255,255,.07);
+      border-color: rgba(192,57,43,.45);
+      transform: translateY(-7px);
+    }
+    .offer-emoji { font-size: 2.8rem; margin-bottom: 1.1rem; }
+    .offer-title { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: .6rem; }
+    .offer-desc { color: rgba(255,255,255,.55); font-size: .92rem; line-height: 1.65; }
+
+    /* grid helper */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.25rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 2rem; }
+
+    /* ── ABOUT ─────────────────────────────────── */
+    .about { background: #fff; }
+    .about-img {
+      width: 100%; aspect-ratio: 2/3;
+      object-fit: cover; object-position: top;
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.14);
+    }
+    .about-body p { font-size: .98rem; color: #444; line-height: 1.8; margin-bottom: 1rem; }
+    .about-body p:last-child { margin-bottom: 0; }
+    .badge-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.75rem; }
+    .badge {
+      padding: .45rem 1.1rem;
+      background: rgba(192,57,43,.1); color: var(--red);
+      border-radius: 50px; font-size: .8rem; font-weight: 700;
+      letter-spacing: .5px; text-transform: uppercase;
+    }
+
+    /* ── COACHES ───────────────────────────────── */
+    .coaches { background: var(--light); }
+    .coach-card {
+      background: #fff; border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 36px rgba(0,0,0,.08);
+      transition: transform .3s;
+    }
+    .coach-card:hover { transform: translateY(-9px); }
+    .coach-img {
+      width: 100%;
+      display: block;
+    }
+    .coach-body { padding: 1.75rem 2rem; }
+    .coach-name { font-size: 1.45rem; font-weight: 800; margin-bottom: .2rem; }
+    .coach-role {
+      font-size: .78rem; font-weight: 700;
+      color: var(--red); text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: .9rem;
+    }
+    .coach-bio { font-size: .93rem; color: #555; line-height: 1.75; }
+
+    /* ── SCHEDULE ──────────────────────────────── */
+    .schedule { background: var(--dark); }
+    .sched-row {
+      display: flex; align-items: flex-start;
+      gap: 1.25rem; flex-wrap: wrap;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 14px; padding: 1.5rem 1.75rem;
+      margin-bottom: .85rem;
+      transition: all .25s;
+    }
+    .sched-row:hover {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(192,57,43,.45);
+      transform: translateX(5px);
+    }
+    .sched-when {
+      min-width: 180px; font-weight: 700;
+      color: var(--gold); font-size: .88rem;
+      line-height: 1.4;
+    }
+    .sched-info { flex: 1; }
+    .sched-class { font-weight: 700; color: #fff; font-size: 1rem; }
+    .sched-age { font-size: .83rem; color: rgba(255,255,255,.45); margin-top: .15rem; }
+    .sched-price {
+      font-weight: 800; color: var(--red);
+      font-size: 1rem; white-space: nowrap;
+      align-self: center;
+    }
+    .sched-note {
+      background: rgba(245,166,35,.08);
+      border: 1px solid rgba(245,166,35,.2);
+      border-radius: 12px; padding: 1.2rem 1.6rem;
+      color: rgba(255,255,255,.72); font-size: .92rem;
+      line-height: 1.7; margin-top: .25rem;
+    }
+
+    /* ── MAP ───────────────────────────────────── */
+    .location { background: #fff; }
+    .map-wrap {
+      border-radius: 18px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.1);
+      height: 420px;
+    }
+    .map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+    /* ── REVIEWS ───────────────────────────────── */
+    .reviews { background: var(--light); }
+    .review-card {
+      background: #fff; border-radius: 16px;
+      padding: 2rem; height: 100%;
+      box-shadow: 0 4px 22px rgba(0,0,0,.07);
+      position: relative;
+    }
+    .review-card::before {
+      content: '"'; font-family: Georgia, serif;
+      font-size: 5.5rem; color: var(--red); opacity: .12;
+      position: absolute; top: -.4rem; left: 1.4rem; line-height: 1;
+    }
+    .stars { color: var(--gold); font-size: .85rem; margin-bottom: .75rem; }
+    .review-text { font-size: .93rem; color: #444; line-height: 1.75; margin-bottom: 1.1rem; }
+    .review-name { font-weight: 700; font-size: .88rem; }
+
+    /* ── CONTACT ───────────────────────────────── */
+    .contact { background: var(--dark2); }
+    .contact-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px; padding: 2.75rem 2rem;
+      text-align: center; transition: all .3s;
+    }
+    .contact-card:hover {
+      background: rgba(255,255,255,.08);
+      transform: translateY(-5px);
+    }
+    .c-icon { font-size: 2.4rem; margin-bottom: .85rem; }
+    .c-type {
+      font-size: .72rem; font-weight: 700;
+      color: rgba(255,255,255,.4);
+      text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: .4rem;
+    }
+    .c-value { font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: .4rem; }
+    .c-note { font-size: .83rem; color: rgba(255,255,255,.35); }
+
+    /* ── SOCIAL BANNER ─────────────────────────── */
+    .social-banner {
+      background: var(--red); padding: 3.5rem 0; text-align: center;
+    }
+    .social-banner h2 {
+      font-size: 1.7rem; font-weight: 800; color: #fff; margin-bottom: 1.5rem;
+    }
+    .s-btn {
+      display: inline-flex; align-items: center; gap: .65rem;
+      padding: .85rem 1.9rem; border-radius: 50px;
+      font-weight: 700; font-size: .95rem;
+      text-decoration: none; margin: .35rem;
+      transition: all .25s;
+    }
+    .s-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+    .s-fb  { background: #1877F2; color: #fff; }
+    .s-fb:hover  { color: #fff; }
+    .s-ig  { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: #fff; }
+    .s-ig:hover  { color: #fff; }
+
+    /* ── FOOTER ────────────────────────────────── */
+    footer {
+      background: var(--dark); padding: 2.25rem 0;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex; gap: 1.5rem; justify-content: center;
+      flex-wrap: wrap; margin-bottom: .85rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,.35); text-decoration: none;
+      font-size: .78rem; transition: color .2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,.65); }
+    footer p { color: rgba(255,255,255,.25); font-size: .8rem; }
+
+    /* ── RESPONSIVE ────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links, .nav-social { display: none !important; }
+      .burger { display: flex; }
+      .sched-when { min-width: auto; width: 100%; }
+      .sched-price { margin-top: .25rem; }
+      .about-cols { display: flex; flex-direction: column; }
+      .about-cols .col-img { order: -1; margin-bottom: 2rem; }
+
+      /* hero mobile: obraz jako pełne tło */
+      .hero-bg-img { width: 100%; filter: brightness(.22); }
+      .hero-overlay {
+        background: linear-gradient(to bottom,
+          rgba(15,15,26,.7) 0%,
+          rgba(15,15,26,.4) 50%,
+          rgba(15,15,26,.8) 100%);
+      }
+      .hero-content {
+        align-items: center; text-align: center;
+        padding: 7rem 1.5rem 4rem;
+      }
+      .hero-btns { justify-content: center; }
+    }
+    @media (min-width: 769px) {
+      .about-cols { display: grid; grid-template-columns: 5fr 7fr; gap: 3.5rem; align-items: center; }
+      .coaches-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+      .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 760px; margin: 0 auto; }
+    }
+    @media (max-width: 768px) {
+      .coaches-grid, .reviews-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+      .contact-grid { display: flex; flex-direction: column; gap: 1.25rem; }
+    }
+
+    /* scroll-reveal helper */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
 </head>
 <body>
-  
-  <section data-bs-version="5.1" class="menu menu2 cid-uoUXhXCdNt" once="menu" id="menu2-1m">
-    
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container-fluid">
-            <div class="navbar-brand">
-                
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7">Akrokick</a></span>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html">Strona główna</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="galeria.html">Galeria</a></li>
-                    
-                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#features16-1w">Prowadzący</a>
-                    </li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#timeline03-20">Zajęcia</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#contacts1-1z">Kontakt</a></li></ul>
-                <div class="icons-menu">
-                    <a class="iconfont-wrapper" href="https://www.facebook.com/profile.php?id=61567168265481">
-                        <span class="p-2 mbr-iconfont socicon-facebook socicon"></span>
-                    </a>
-                    <a class="iconfont-wrapper" href="https://www.instagram.com/akrokick/" target="_blank">
-                        <span class="p-2 mbr-iconfont socicon-instagram socicon"></span>
-                    </a>
-                    
-                    
-                </div>
-                
-            </div>
-        </div>
-    </nav>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand">Akro<span>kick</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">O nas</a></li>
+      <li><a href="#coaches">Prowadzący</a></li>
+      <li><a href="#schedule">Zajęcia</a></li>
+      <li><a href="polkolonie.html">Półkolonie/Wycieczki</a></li>
+      <li><a href="#location">Miejsce</a></li>
+      <li><a href="#reviews">Opinie</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+      <li><a href="galeria.html">Galeria</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-social" style="display:flex;gap:.75rem">
+        <a href="https://www.facebook.com/profile.php?id=61567168265481" target="_blank">
+          <span class="socicon-facebook socicon"></span>
+        </a>
+        <a href="https://www.instagram.com/akrokick/" target="_blank">
+          <span class="socicon-instagram socicon"></span>
+        </a>
+      </div>
+      <button class="burger" id="burgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mob-menu">
+  <button id="mob-close" aria-label="Zamknij">✕</button>
+  <a href="#about">O nas</a>
+  <a href="#coaches">Prowadzący</a>
+  <a href="#schedule">Zajęcia</a>
+  <a href="polkolonie.html">Półkolonie/Wycieczki</a>
+  <a href="#location">Miejsce</a>
+  <a href="#reviews">Opinie</a>
+  <a href="#contact">Kontakt</a>
+  <a href="galeria.html">Galeria</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <img src="assets/images/3y6a8896-1150x1150.png" alt="" class="hero-bg-img" aria-hidden="true">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <img src="assets/images/logo-2769x2711.jpg" alt="Akrokick logo" class="hero-logo">
+    <h1 class="hero-title">Akro<span class="r">kick</span></h1>
+    <p class="hero-sub">Zajęcia sportowe z elementami akrobatyki, gimnastyki i sztuk walki. Dołącz do naszego klubu i odkryj swoje możliwości!</p>
+    <div class="hero-btns">
+      <a href="#schedule" class="btn-red">Sprawdź zajęcia</a>
+      <a href="#contact" class="btn-ghost">Skontaktuj się</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Przewiń</div>
 </section>
 
-<section data-bs-version="5.1" class="image01 cid-uOYuMDgO5X" id="image01-2z">
-  
-
-  
-  
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-9">
-        <div class="image-wrapper mb-4">
-          <img class="w-100" src="assets/images/img-5949-1179x1145.jpg" alt="Mobirise Website Builder">
-        </div>
-        
-        
+<!-- OFFERS -->
+<section class="offers sec-pad" id="offers">
+  <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem">
+    <div style="text-align:center;margin-bottom:3rem" class="reveal">
+      <p class="label gold">Co oferujemy</p>
+      <h2 class="sec-title" style="color:#fff">Trzy dyscypliny, jedna pasja</h2>
+    </div>
+    <div class="grid-3">
+      <div class="offer-card reveal">
+        <div class="offer-emoji">🤸</div>
+        <h3 class="offer-title">Akrobatyka</h3>
+        <p class="offer-desc">Gwiazdy, salta, stójki i wiele więcej. Rozwijamy siłę, gibkość i koordynację ruchową od podstaw.</p>
+      </div>
+      <div class="offer-card reveal">
+        <div class="offer-emoji">🥊</div>
+        <h3 class="offer-title">Kickboxing</h3>
+        <p class="offer-desc">Techniki kopnięć i uderzeń w bezpiecznym środowisku. Pewność siebie, koncentracja i samoobrona.</p>
+      </div>
+      <div class="offer-card reveal">
+        <div class="offer-emoji">🏅</div>
+        <h3 class="offer-title">Gimnastyka</h3>
+        <p class="offer-desc">Ćwiczenia kształtujące postawę, równowagę i sprawność ogólną — dopasowane do wieku dziecka.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section data-bs-version="5.1" class="header1 cid-uqMpfdCDE6" id="header01-27">
-	
-
-	
-	
-
-	<div class="container-fluid">
-		<div class="row justify-content-center">
-			<div class="col-12 col-md-12 col-lg-7 image-wrapper">
-				<img class="w-100" src="assets/images/logo-2769x2711.jpg" alt="Mobirise Website Builder">
-			</div>
-			<div class="col-12 col-lg col-md-12">
-				<div class="text-wrapper align-left">
-					<h1 class="mbr-section-title mbr-fonts-style mb-4 display-2"><strong>Akrokick</strong></h1>
-					<p class="mbr-text mbr-fonts-style mb-4 display-7">
-						Zajęcia sportowe z elementami akrobatyki, gimnastyki i sztuk walki. Dołącz do naszego klubu i odkryj swoje możliwości!
-					</p>
-					
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section data-bs-version="5.1" class="features16 cid-uoV4XGV1hx" id="features16-1w">
-
-    
-
-    
-    
-    <div class="container">
-        <div class="content-wrapper">
-            <div class="row align-items-center">
-                <div class="col-12 col-lg">
-                    <div class="text-wrapper">
-                        <h6 class="card-title mbr-fonts-style display-2"><strong>Kim jesteśmy?</strong><br><strong><br></strong></h6>
-                        <p class="mbr-text mbr-fonts-style mb-4 display-4">Cześć! Jesteśmy młodym, ambitnym duetem pasjonatów sportu. Ja, 25-letni student ratownictwa medycznego, oraz moja dziewczyna Wiktoria, 24-letnia absolwentka psychologii, która pracuje w szkole podstawowej. Wiktoria ma doświadczenie w pracy z młodzieżą, a jej wiedza psychologiczna pozwala jej lepiej rozumieć potrzeby dzieci.
-<br>
-<br>Sport towarzyszy nam od najmłodszych lat. Ja trenuję sztuki walki (boks, muay thai, karate), a Wiktoria od lat angażuje się w taniec, gimnastykę i sztuki walki. Jako samouki w akrobatyce, czerpiemy wiedzę i umiejętności z odbytych szkoleń z metodyki nauczania, które prowadzą doświadczeni trenerzy.
-<br>
-<br>Razem tworzymy przyjazne i inspirujące środowisko, w którym dzieci chętnie uczestniczą w zajęciach. Dzięki mojemu przeszkoleniu w zakresie pierwszej pomocy oraz Wiktorii wiedzy psychologicznej, nasze zajęcia są nie tylko bezpieczne, ale także oferują wsparcie emocjonalne. Mamy już za sobą dwa szkolenia z metodyki nauczania z gimnastyki i akrobatyki sportowej, a przed nami wiele kolejnych kursów. Stawiamy na ciągły rozwój i profesjonalizm, aby jeszcze lepiej inspirować młodych sportowców i pomagać im w odkrywaniu radości z aktywności fizycznej!</p>
-                        
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <div class="image-wrapper">
-                        <img src="assets/images/3y6a8691-1160x1740.jpg" alt="Mobirise Website Builder">
-                    </div>
-                </div>
-            </div>
+<!-- ABOUT -->
+<section class="about sec-pad" id="about">
+  <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem">
+    <div class="about-cols">
+      <div class="col-img reveal">
+        <img src="assets/images/3y6a8691-1160x1740.jpg" alt="Zajęcia Akrokick" class="about-img">
+      </div>
+      <div class="reveal">
+        <p class="label">Kim jesteśmy</p>
+        <h2 class="sec-title">Pasja do sportu,<br>miłość do nauczania</h2>
+        <div class="about-body">
+          <p>Cześć! Jesteśmy młodym, ambitnym duetem pasjonatów sportu. Ja, 25-letni student ratownictwa medycznego, oraz moja dziewczyna Wiktoria, 24-letnia absolwentka psychologii pracująca w szkole podstawowej. Wiktoria ma doświadczenie w pracy z młodzieżą, a jej wiedza psychologiczna pozwala jej lepiej rozumieć potrzeby dzieci.</p>
+          <p>Sport towarzyszy nam od najmłodszych lat. Trenuję sztuki walki (boks, muay thai, karate), a Wiktoria od lat angażuje się w taniec, gimnastykę i sztuki walki. Jako samouki w akrobatyce, czerpiemy wiedzę z odbytych szkoleń z metodyki nauczania, które prowadzą doświadczeni trenerzy.</p>
+          <p>Razem tworzymy przyjazne i inspirujące środowisko. Dzięki mojemu przeszkoleniu z pierwszej pomocy oraz wiedzy psychologicznej Wiktorii, nasze zajęcia są bezpieczne i oferują wsparcie emocjonalne.</p>
         </div>
+        <div class="badge-row">
+          <span class="badge">Pierwsza pomoc</span>
+          <span class="badge">Psychologia</span>
+          <span class="badge">Metodyka nauczania</span>
+          <span class="badge">Certyfikowani</span>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<section data-bs-version="5.1" class="features38 cid-uqHQphtqBR" id="features038-21">
-    
-
-    
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-12 col-lg">
-                <div class="text-wrapper align-left">
-                    <h1 class="mbr-section-title mbr-fonts-style mb-4 display-2">
-                        <strong>Wiktoria Pawlusek</strong></h1>
-                    <p class="mbr-text align-left mbr-fonts-style mb-4 display-7">Mam 24 lata i jestem absolwentką psychologii. Obecnie pracuję w szkole podstawowej, co pozwala mi na codzienny kontakt z młodzieżą i wykorzystywanie mojej wiedzy psychologicznej w praktyce. Sport towarzyszy mi od najmłodszych lat – od tańca, przez gimnastykę, aż po sztuki walki, w tym karate i muay thai.
-<br>
-<br>Jestem osobą pełną pasji, która uwielbia inspirować dzieci do aktywności fizycznej. W pracy stawiam na zrozumienie emocjonalnych potrzeb młodych ludzi, co pozwala mi tworzyć przyjazne i bezpieczne środowisko. Zawsze dążę do ciągłego rozwoju, uczestnicząc w kursach i szkoleniach, aby być jeszcze lepszym wsparciem dla moich podopiecznych. Moje podejście do sportu i psychologii łączy się w piękną całość, która pozwala mi efektywnie przekazywać wiedzę i umiejętności, a także rozwijać potencjał młodych sportowców!</p>
-                    
-                </div>
-            </div>
-            <div class="col-12 col-md-12 col-lg-6 image-wrapper">
-                <img class="w-100" src="assets/images/3y6a8673-1-1256x1884.jpg" alt="Mobirise Website Builder">
-            </div>
-        </div>
-        <div class="row row-reverse justify-content-center">
-
-            <div class="col-12 col-md-12 col-lg">
-                <div class="text-wrapper align-left">
-                    <h1 class="mbr-section-title mbr-fonts-style mb-4 display-2"><strong>Hubert Kozera</strong></h1>
-                    <p class="mbr-text align-left mbr-fonts-style mb-4 display-7">Mam 25 lat i jestem studentem trzeciego roku ratownictwa medycznego. Sport towarzyszy mi od najmłodszych lat – od piłki nożnej i gimnastyki, przez siłownię, aż po sztuki walki, które trenuję od 6 lat (boks, muay thai, karate). Ostatnio odkryłem także akrobatykę, w której jestem samoukiem.
-<br>
-<br>Moje studia w ratownictwie medycznym pozwalają mi zwiększyć bezpieczeństwo dzieci podczas zajęć dzięki solidnemu przeszkoleniu z pierwszej pomocy. Do mojego rozwoju zaliczam również odbyte oraz planowane kursy i szkolenia z metodyki nauczania, które pomagają mi lepiej przekazywać wiedzę i umiejętności młodym sportowcom.
-<br>
-<br>Jako młoda, ambitna osoba pragnę dzielić się swoją pasją do sportu z dziećmi i młodzieżą. Wierzę, że ruch i aktywność fizyczna to klucz do zdrowego rozwoju, a moje doświadczenie oraz chęć ciągłego rozwoju sprawiają, że mogę inspirować młodych sportowców. Razem możemy odkrywać radość z aktywności i osiągać wspaniałe rezultaty!</p>
-                    
-                </div>
-            </div>
-            <div class="col-12 col-md-12 col-lg-6 image-wrapper">
-                <img class="w-100" src="assets/images/3y6a8712-1-1256x1884.jpg" alt="Mobirise Website Builder">
-            </div>
-        </div>
-        
+<!-- COACHES -->
+<section class="coaches sec-pad" id="coaches">
+  <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem">
+    <div style="text-align:center;margin-bottom:3rem" class="reveal">
+      <p class="label">Nasz zespół</p>
+      <h2 class="sec-title">Prowadzący</h2>
     </div>
-</section>
-
-<section data-bs-version="5.1" class="people04 cid-uu2jkqGjcm" id="people04-2g">
-	
-	
-	<div class="container">
-		<div class="row mb-5 justify-content-center">
-			<div class="col-12 mb-0 content-head">
-				<h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-					<strong>Opinie</strong></h3>
-				
-			</div>
-		</div>
-		<div class="row mbr-masonry" data-masonry="{&quot;percentPosition&quot;: true }">
-			
-			<div class="item features-without-image col-12 col-md-6 col-lg-4 active">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<p class="card-text mbr-fonts-style display-7">
-							Atmosfera w klubie jest świetna. Pan Hubert i Pani Wiktoria potrafią przekazać wiedzę podopiecznym. Bardzo sympatyczni 🙂. Najważniejsze jest bezpieczeństwo na treningach i duży nacisk na poprawną technikę. Syn zadowolony chętnie uczęszcza na treningi. Polecam serdecznie osobom początkującym jak i zaawansowanym!<br>
-						</p>
-						
-						<h5 class="card-title mbr-fonts-style display-7">
-							<strong>Paweł</strong></h5>
-					</div>
-				</div>
-			</div>
-			<div class="item features-without-image col-12 col-md-6 col-lg-4">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<p class="card-text mbr-fonts-style display-7">Dzieci są bardzo zadowolne z niecierpliwością czekają na kolejne zajęcia na których panuje mega sympatyczna atmosfera. Już po paru zajęciach widać podstępy w rozwoju fizycznym, chętnie wykonują ćwiczenia w domu. Zawsze jest kontakt z organizatorami, którzy świetnie rozumieją różne sytuacje i potrzeby dzieci.&nbsp;<br></p>
-						
-						<h5 class="card-title mbr-fonts-style display-7">
-							<strong>Anna</strong></h5>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-4">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<p class="card-text mbr-fonts-style display-7">
-							Dziecko bardzo zadowolone z prowadzonych zajęć. Widać, że jej się podoba bo ćwiczy codziennie. Nie może się doczekać wtorku bo wtedy jest Akrobatyka... dobrze że są takie zajęcia blisko domu.</p>
-						
-						<h5 class="card-title mbr-fonts-style display-7">&nbsp;</h5>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-4">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<p class="card-text mbr-fonts-style display-7">
-							Super ekipa! Perfekcyjne zajęcia dla dzieci - zarówno akrobatyka jak i kickboxing. Wiktoria z Hubertem stworzyli coś ekstra dla każdego dziecka, niezależnie od płci. Niesamowite zajęcia, zaangażowanie i świetne indywidualne podejście.</p>
-						
-						<h5 class="card-title mbr-fonts-style display-7">
-							<strong>Martyna</strong></h5>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-4">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<p class="card-text mbr-fonts-style display-7">
-							Super ekipa, profesjonalne podejście</p>
-						
-						<h5 class="card-title mbr-fonts-style display-7">
-							<strong>Lena</strong></h5>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-4">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<p class="card-text mbr-fonts-style display-7">
-							Super. Dziecko bardzo zadowolone
-						</p>
-						
-						<h5 class="card-title mbr-fonts-style display-7">&nbsp;</h5>
-					</div>
-				</div>
-			</div><div class="item features-without-image col-12 col-md-6 col-lg-4">
-				<div class="item-wrapper">
-					<div class="card-box align-left">
-						<p class="card-text mbr-fonts-style display-7">
-							Polecam, pełen profesjonalizm!</p>
-						
-						<h5 class="card-title mbr-fonts-style display-7">
-							<strong>Krystian</strong></h5>
-					</div>
-				</div>
-			</div>
-			
-			
-			
-		</div>
-	</div>
-</section>
-
-<section data-bs-version="5.1" class="map1 cid-uqHUVTZDs8" id="map01-26">
-	
-	
-	
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-12 content-head">
-				<div class="mbr-section-head mb-5">
-					<h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Miejsce</strong></h3>
-					<h4 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-5">Samorządowa Instytucja Kultury Kasztelania w Kijach</h4>
-				</div>
-			</div>
-		</div>
-		<div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/d/u/0/embed?mid=1Sb072vy6IWpYgP-u0eLSG1VURcVgexg&amp;ehbc=2E312F&amp;noprof=1" allowfullscreen=""></iframe></div>
-	</div>
-</section>
-
-<section data-bs-version="5.1" class="timeline03 cid-uoVfOKU8xl" id="timeline03-20">
-    
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-12 mb-5 content-head">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Harmonogram</strong></h3>
-                
-            </div>
+    <div class="coaches-grid">
+      <div class="coach-card reveal">
+        <img src="assets/images/3y6a8673-1-1256x1884.jpg" alt="Wiktoria Pawlusek" class="coach-img">
+        <div class="coach-body">
+          <h3 class="coach-name">Wiktoria Pawlusek</h3>
+          <p class="coach-role">Akrobatyka · Gimnastyka · Psychologia</p>
+          <p class="coach-bio">Mam <span id="age-wiktoria"></span> i jestem absolwentką psychologii. Pracuję w szkole podstawowej, co pozwala mi na codzienny kontakt z młodzieżą i wykorzystywanie wiedzy psychologicznej w praktyce. Sport towarzyszy mi od najmłodszych lat — od tańca, przez gimnastykę, aż po sztuki walki. W pracy stawiam na zrozumienie emocjonalnych potrzeb młodych ludzi i tworzenie przyjaznego, bezpiecznego środowiska.</p>
         </div>
-        
-        <div class="row justify-content-center item features-without-image mb-5 active">
-            <div class="col-12 col-lg-2">
-                <h5 class="mbr-card-title mbr-fonts-style mt-0 mb-3 display-7"><strong>Wtorek(16:00) - Kije</strong></h5>
-
-            </div>
-            <div class="col-12 col-lg">
-
-                <h6 class="mbr-card-subtitle mbr-fonts-style mt-0 mb-3 display-7">30zł / 100zł za miesiąc</h6>
-            </div>
-            <div class="col-md-12 col-lg-6 item-wrapper">
-                <p class="mbr-text mbr-fonts-style mt-0 mb-0 display-7"><strong>Akrobatyka dla dzieci 4 - 8 lat</strong></p>
-            </div>
-        </div><div class="row justify-content-center item features-without-image mb-5">
-            <div class="col-12 col-lg-2">
-                <h5 class="mbr-card-title mbr-fonts-style mt-0 mb-3 display-7"><strong>Wtorek(17:00) - Kije</strong></h5>
-
-            </div>
-            <div class="col-12 col-lg">
-
-                <h6 class="mbr-card-subtitle mbr-fonts-style mt-0 mb-3 display-7">30zł / 100zł za miesiąc</h6>
-            </div>
-            <div class="col-md-12 col-lg-6 item-wrapper">
-                <p class="mbr-text mbr-fonts-style mt-0 mb-0 display-7"><strong>Akrobatyka dla dzieci 8 - 15 lat</strong></p>
-            </div>
-        </div><div class="row justify-content-center item features-without-image mb-5">
-            <div class="col-12 col-lg-2">
-                <h5 class="mbr-card-title mbr-fonts-style mt-0 mb-3 display-7"><strong>Czwartek(18:00) - Kije</strong></h5>
-
-            </div>
-            <div class="col-12 col-lg">
-
-                <h6 class="mbr-card-subtitle mbr-fonts-style mt-0 mb-3 display-7">25zł</h6>
-            </div>
-            <div class="col-md-12 col-lg-6 item-wrapper">
-                <p class="mbr-text mbr-fonts-style mt-0 mb-0 display-7"><strong>Kickboxing dla dzieci 6+ lat</strong></p>
-            </div>
-        </div><div class="row justify-content-center item features-without-image mb-5">
-            <div class="col-12 col-lg-2">
-                <h5 class="mbr-card-title mbr-fonts-style mt-0 mb-3 display-7"><strong>Czwartek(16:00) - Imielno</strong></h5>
-
-            </div>
-            <div class="col-12 col-lg">
-
-                <h6 class="mbr-card-subtitle mbr-fonts-style mt-0 mb-3 display-7">40zł / 120zł za miesiąc</h6>
-            </div>
-            <div class="col-md-12 col-lg-6 item-wrapper">
-                <p class="mbr-text mbr-fonts-style mt-0 mb-0 display-7"><strong>Akrobatyka dla dzieci 4 - 15 lat</strong></p>
-            </div>
-        </div><div class="row justify-content-center item features-without-image mb-5">
-            <div class="col-12 col-lg-2">
-                <h5 class="mbr-card-title mbr-fonts-style mt-0 mb-3 display-7"></h5>
-
-            </div>
-            <div class="col-12 col-lg">
-
-                <h6 class="mbr-card-subtitle mbr-fonts-style mt-0 mb-3 display-7"> 40zł/70zł/110zł</h6>
-            </div>
-            <div class="col-md-12 col-lg-6 item-wrapper">
-                <p class="mbr-text mbr-fonts-style mt-0 mb-0 display-7"><strong>Współpracujemy ze szkołami podstawowymi i przedszkolami.<br> Kickboxing dla dzieci, młodzieży i dorosłych w Pińczowie (siłownia Alcatraz) - w poniedzialki 17:15 i 18:30&nbsp;</strong></p>
-            </div>
+      </div>
+      <div class="coach-card reveal">
+        <img src="assets/images/3y6a8712-1-1256x1884.jpg" alt="Hubert Kozera" class="coach-img">
+        <div class="coach-body">
+          <h3 class="coach-name">Hubert Kozera</h3>
+          <p class="coach-role">Kickboxing · Akrobatyka · Ratownictwo</p>
+          <p class="coach-bio">Mam <span id="age-hubert"></span> i jestem studentem trzeciego roku ratownictwa medycznego. Sztuki walki trenuję od 6 lat (boks, muay thai, karate). Studia w ratownictwie medycznym pozwalają mi zapewnić dzieciom pełne bezpieczeństwo podczas zajęć. Chcę dzielić się pasją do sportu i inspirować młodych do odkrywania radości z aktywności fizycznej.</p>
         </div>
-        
+      </div>
     </div>
+  </div>
 </section>
 
-<section data-bs-version="5.1" class="contacts1 cid-uoV9TPMudJ" id="contacts1-1z">
-
-    
-
-    
-    
-    <div class="container">
-        <div class="mbr-section-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Kontakt</strong></h3>
-            <h4 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-2 display-5">Z chęcią odpowiemy na wszystkie pytania</h4>
-        </div>
-        <div class="row justify-content-center mt-4">
-            <div class="card col-12 col-lg-6">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <div class="image-wrapper">
-                            <span class="mbr-iconfont mobi-mbri-letter mobi-mbri"></span>
-                        </div>
-                        <h4 class="card-title mbr-fonts-style mb-2 display-2">
-                            <strong>Email</strong>
-                        </h4>
-                        <p class="mbr-text mbr-fonts-style mb-2 display-4">Odpowiemy tak szybko jak potrafimy</p>
-                        <h5 class="link mbr-fonts-style display-7">akrokick1@gmail.com</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="card col-12 col-lg-6">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <div class="image-wrapper">
-                            <span class="mbr-iconfont mobi-mbri-mobile-2 mobi-mbri"></span>
-                        </div>
-                        <h4 class="card-title mbr-fonts-style align-center mb-2 display-2"><strong>Telefon</strong></h4>
-                        <p class="mbr-text mbr-fonts-style mb-2 display-4">Poniedziałek - Piątek 09:00 - 18:00</p>
-                        <h5 class="link mbr-black mbr-fonts-style display-7">787 295 524</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- SCHEDULE -->
+<section class="schedule sec-pad" id="schedule">
+  <div style="max-width:820px;margin:0 auto;padding:0 1.5rem">
+    <div style="text-align:center;margin-bottom:3rem" class="reveal">
+      <p class="label gold">Harmonogram</p>
+      <h2 class="sec-title" style="color:#fff">Zajęcia</h2>
     </div>
+
+    <div class="sched-row reveal">
+      <div class="sched-when">📍 Wtorek, 16:00<br>Kije</div>
+      <div class="sched-info">
+        <div class="sched-class">Akrobatyka</div>
+        <div class="sched-age">Dzieci 4–8 lat</div>
+      </div>
+      <div class="sched-price">30 zł&nbsp;/ 100 zł mies.</div>
+    </div>
+
+    <div class="sched-row reveal">
+      <div class="sched-when">📍 Wtorek, 17:00<br>Kije</div>
+      <div class="sched-info">
+        <div class="sched-class">Akrobatyka</div>
+        <div class="sched-age">Dzieci 8–15 lat</div>
+      </div>
+      <div class="sched-price">30 zł&nbsp;/ 100 zł mies.</div>
+    </div>
+
+    <div class="sched-row reveal">
+      <div class="sched-when">📍 Czwartek, 18:00<br>Kije</div>
+      <div class="sched-info">
+        <div class="sched-class">Kickboxing</div>
+        <div class="sched-age">Dzieci 6+ lat</div>
+      </div>
+      <div class="sched-price">25 zł</div>
+    </div>
+
+    <div class="sched-row reveal">
+      <div class="sched-when">📍 Czwartek, 16:00<br>Imielno</div>
+      <div class="sched-info">
+        <div class="sched-class">Akrobatyka</div>
+        <div class="sched-age">Dzieci 4–15 lat</div>
+      </div>
+      <div class="sched-price">40 zł&nbsp;/ 120 zł mies.</div>
+    </div>
+
+    <div class="sched-note reveal">
+      🏫 <strong>Współpracujemy ze szkołami podstawowymi i przedszkolami.</strong><br>
+      🥊 Kickboxing dla dzieci, młodzieży i dorosłych w Pińczowie (siłownia Alcatraz) — poniedziałki 17:15 i 18:30 · od 40 zł / 70 zł / 110 zł
+    </div>
+  </div>
 </section>
 
-<section data-bs-version="5.1" class="social4 cid-uu2hO9akZf" id="social04-2e">
-    
-    
-    
-
-    <div class="container">
-        <div class="media-container-row">
-            <div class="col-12">
-                <h3 class="mbr-section-title align-center mb-5 mbr-fonts-style display-2">
-                    <strong>Zaobserwuj nas</strong></h3>
-                <div class="social-list align-center">
-                    <a class="iconfont-wrapper bg-facebook m-2 " target="_blank" href="https://www.facebook.com/profile.php?id=61567168265481">
-                        <span class="socicon-facebook socicon"></span>
-                    </a>
-                    
-                    <a class="iconfont-wrapper bg-instagram m-2" href="https://www.instagram.com/akrokick/" target="_blank">
-                        <span class="socicon-instagram socicon"></span>
-                    </a>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                </div>
-            </div>
-        </div>
+<!-- MAP -->
+<section class="location sec-pad" id="location">
+  <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem">
+    <div style="text-align:center;margin-bottom:3rem" class="reveal">
+      <p class="label">Gdzie nas znaleźć</p>
+      <h2 class="sec-title">Miejsce zajęć</h2>
+      <p class="sec-sub" style="margin:0 auto">Samorządowa Instytucja Kultury Kasztelania w Kijach</p>
     </div>
+    <div class="map-wrap reveal">
+      <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1Sb072vy6IWpYgP-u0eLSG1VURcVgexg&ehbc=2E312F&noprof=1" allowfullscreen></iframe>
+    </div>
+  </div>
 </section>
 
-<section data-bs-version="5.1" class="footer3 cid-uOYmImytC7" once="footers" id="footer03-2s">
-
-        
-
-    
-
-    <div class="container">
-        <div class="row">
-            <div class="row-links">
-                <ul class="header-menu">
-                  
-                  
-                  
-                  
-                <li class="header-menu-item mbr-fonts-style display-5"><a href="politykaprywatnosci.html" class="text-success">Polityka Prywatności</a></li><li class="header-menu-item mbr-fonts-style display-5"><a href="page4.html" class="text-success text-primary">Regulamin</a></li><li class="header-menu-item mbr-fonts-style display-5"><a href="page3.html" class="text-success">RODO</a></li><li class="header-menu-item mbr-fonts-style display-5"><a href="page5.html" class="text-success text-primary">Standardy Ochrony Małoletnich</a></li></ul>
-              </div>
-
-            
-            
-        </div>
+<!-- REVIEWS -->
+<section class="reviews sec-pad" id="reviews">
+  <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem">
+    <div style="text-align:center;margin-bottom:3rem" class="reveal">
+      <p class="label">Opinie</p>
+      <h2 class="sec-title">Co mówią rodzice?</h2>
     </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;">
-    <img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p>
-    </section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script> 
-     <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/masonry/masonry.pkgd.min.js"></script>  <script src="assets/imagesloaded/imagesloaded.pkgd.min.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
-  
- <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
-    <input name="animation" type="hidden">
-  </body>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Atmosfera w klubie jest świetna. Pan Hubert i Pani Wiktoria potrafią przekazać wiedzę podopiecznym. Bardzo sympatyczni. Najważniejsze jest bezpieczeństwo na treningach i duży nacisk na poprawną technikę. Syn zadowolony, chętnie uczęszcza na treningi. Polecam serdecznie!</p>
+        <div class="review-name">Paweł</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Dzieci są bardzo zadowolone, z niecierpliwością czekają na kolejne zajęcia, na których panuje mega sympatyczna atmosfera. Już po paru zajęciach widać postępy w rozwoju fizycznym. Zawsze jest kontakt z organizatorami, którzy świetnie rozumieją potrzeby dzieci.</p>
+        <div class="review-name">Anna</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Dziecko bardzo zadowolone z prowadzonych zajęć. Widać, że jej się podoba, bo ćwiczy codziennie. Nie może się doczekać wtorku, bo wtedy jest akrobatyka... Dobrze, że są takie zajęcia blisko domu.</p>
+        <div class="review-name">Rodzic</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Super ekipa! Perfekcyjne zajęcia — zarówno akrobatyka jak i kickboxing. Wiktoria z Hubertem stworzyli coś ekstra dla każdego dziecka, niezależnie od płci. Niesamowite zaangażowanie i świetne indywidualne podejście.</p>
+        <div class="review-name">Martyna</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Super ekipa, profesjonalne podejście.</p>
+        <div class="review-name">Lena</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Polecam, pełen profesjonalizm!</p>
+        <div class="review-name">Krystian</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact sec-pad" id="contact">
+  <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem">
+    <div style="text-align:center;margin-bottom:3rem" class="reveal">
+      <p class="label gold">Napisz do nas</p>
+      <h2 class="sec-title" style="color:#fff">Kontakt</h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,.45);margin:0 auto">Z chęcią odpowiemy na wszystkie pytania</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="c-icon">✉️</div>
+        <div class="c-type">Email</div>
+        <div class="c-value">akrokick1@gmail.com</div>
+        <div class="c-note">Odpowiemy tak szybko jak potrafimy</div>
+      </div>
+      <div class="contact-card reveal">
+        <div class="c-icon">📱</div>
+        <div class="c-type">Telefon</div>
+        <div class="c-value">787 295 524</div>
+        <div class="c-note">Poniedziałek–Piątek, 09:00–18:00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL BANNER -->
+<section class="social-banner">
+  <div style="max-width:900px;margin:0 auto;padding:0 1.5rem">
+    <h2>Zaobserwuj nas w social mediach!</h2>
+    <div>
+      <a href="https://www.facebook.com/profile.php?id=61567168265481" target="_blank" class="s-btn s-fb">
+        <span class="socicon-facebook socicon"></span> Facebook
+      </a>
+      <a href="https://www.instagram.com/akrokick/" target="_blank" class="s-btn s-ig">
+        <span class="socicon-instagram socicon"></span> Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem">
+    <div class="footer-links">
+      <a href="politykaprywatnosci.html">Polityka Prywatności</a>
+      <a href="page4.html">Regulamin</a>
+      <a href="page3.html">RODO</a>
+      <a href="page5.html">Standardy Ochrony Małoletnich</a>
+    </div>
+    <p>© 2025 Akrokick · Wiktoria Pawlusek &amp; Hubert Kozera</p>
+    <p style="color:rgba(255,255,255,.15);font-size:.72rem;margin-top:.25rem">Strona wykonana przez <a href="mailto:bskubek@gmail.com" style="color:rgba(255,255,255,.25);text-decoration:none">Bogdan Skubek</a></p>
+  </div>
+</footer>
+
+<script>
+  // Dynamic ages
+  function calcAge(year, month, day) {
+    const today = new Date();
+    let age = today.getFullYear() - year;
+    if (today.getMonth() + 1 < month || (today.getMonth() + 1 === month && today.getDate() < day)) age--;
+    return age;
+  }
+  function polishAge(age) {
+    const l2 = age % 100, l1 = age % 10;
+    const suffix = (l2 >= 12 && l2 <= 14) ? 'lat' : (l1 >= 2 && l1 <= 4) ? 'lata' : 'lat';
+    return `${age} ${suffix}`;
+  }
+  document.getElementById('age-wiktoria').textContent = polishAge(calcAge(2000, 4, 27));
+  document.getElementById('age-hubert').textContent   = polishAge(calcAge(1999, 8, 20));
+
+  // Navbar scroll
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 60));
+
+  // Mobile menu
+  const mob = document.getElementById('mob-menu');
+  document.getElementById('burgerBtn').onclick = () => mob.classList.add('open');
+  document.getElementById('mob-close').onclick  = () => mob.classList.remove('open');
+  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mob.classList.remove('open')));
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
 </html>

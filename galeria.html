@@ -1,324 +1,359 @@
 <!DOCTYPE html>
-<html  >
+<html lang="pl">
 <head>
-  <!-- Site made with Mobirise Website Builder v5.9.18, https://mobirise.com -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v5.9.18, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="assets/images/icon-128x125.png" type="image/x-icon">
-  <meta name="description" content="">
-  
-  
-  <title>Galeria</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/animatecss/animate.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <meta name="description" content="Galeria zdjęć – Akrokick">
+  <title>Galeria · Akrokick</title>
   <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=ABA9Wp"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=ABA9Wp" type="text/css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--red:#C0392B;--dark:#0f0f1a;--dark2:#181828;--gold:#F5A623;--text:#1e1e2e;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter Tight',sans-serif;color:var(--text);background:var(--dark);}
 
-  
-  
-  
+    /* NAV */
+    #nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.1rem 2rem;background:rgba(15,15,26,.96);backdrop-filter:blur(14px);box-shadow:0 2px 24px rgba(0,0,0,.35);}
+    .nav-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+    .nav-brand{font-size:1.55rem;font-weight:900;color:#fff;text-decoration:none;}
+    .nav-brand span{color:var(--red);}
+    .nav-links{display:flex;gap:1.6rem;list-style:none;align-items:center;}
+    .nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-weight:600;font-size:.78rem;letter-spacing:1px;text-transform:uppercase;transition:color .2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--gold);}
+    .nav-social{display:flex;gap:.75rem;}
+    .nav-social a{color:rgba(255,255,255,.6);font-size:1.1rem;transition:color .2s;}
+    .nav-social a:hover{color:var(--gold);}
+    .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.3rem;}
+    .burger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;}
+    #mob-menu{display:none;position:fixed;inset:0;z-index:999;background:rgba(15,15,26,.97);flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+    #mob-menu.open{display:flex;}
+    #mob-menu a{color:#fff;text-decoration:none;font-size:1.4rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;}
+    #mob-close{position:absolute;top:1.5rem;right:1.75rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;}
+
+    /* PAGE HEADER */
+    .page-header{padding:8rem 1.5rem 3.5rem;text-align:center;position:relative;overflow:hidden;}
+    .page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(192,57,43,.18) 0%,transparent 65%);}
+    .page-header h1{position:relative;font-size:clamp(2.5rem,6vw,4rem);font-weight:900;color:#fff;margin-bottom:.5rem;}
+    .page-header h1 span{color:var(--red);}
+    .page-header p{position:relative;color:rgba(255,255,255,.45);font-size:1rem;}
+    .accent-line{width:60px;height:4px;background:var(--red);border-radius:2px;margin:.75rem auto 0;}
+
+    /* GALLERY GRID */
+    .gallery-wrap{max-width:1300px;margin:0 auto;padding:3rem 1.25rem 5rem;}
+
+    .gallery-grid{
+      columns: 4 220px;
+      column-gap: 10px;
+    }
+    .gallery-item{
+      break-inside: avoid;
+      margin-bottom: 10px;
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 10px;
+      position: relative;
+    }
+    .gallery-item img{
+      width: 100%;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .gallery-item:hover img{
+      transform: scale(1.04);
+    }
+    .gallery-item .overlay{
+      position: absolute;
+      inset: 0;
+      background: rgba(15,15,26,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .3s;
+    }
+    .gallery-item:hover .overlay{
+      background: rgba(15,15,26,.45);
+    }
+    .overlay-icon{
+      font-size: 2rem;
+      opacity: 0;
+      transform: scale(.7);
+      transition: all .3s;
+      color: #fff;
+    }
+    .gallery-item:hover .overlay-icon{
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* LIGHTBOX */
+    .lightbox{
+      display: none;
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,.96);
+      align-items: center; justify-content: center;
+    }
+    .lightbox.open{ display: flex; }
+
+    .lb-img{
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 6px;
+      display: block;
+      user-select: none;
+    }
+    .lb-close{
+      position: absolute; top: 1.25rem; right: 1.5rem;
+      background: rgba(255,255,255,.1); border: none;
+      color: #fff; font-size: 1.6rem; line-height: 1;
+      width: 44px; height: 44px; border-radius: 50%;
+      cursor: pointer; transition: background .2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lb-close:hover{ background: rgba(255,255,255,.22); }
+
+    .lb-btn{
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.1); border: none; color: #fff;
+      width: 52px; height: 52px; border-radius: 50%;
+      font-size: 1.4rem; cursor: pointer;
+      transition: background .2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lb-btn:hover{ background: rgba(255,255,255,.22); }
+    .lb-prev{ left: 1.25rem; }
+    .lb-next{ right: 1.25rem; }
+
+    .lb-counter{
+      position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,.4); font-size: .8rem; letter-spacing: 2px;
+      font-family: 'Inter Tight', sans-serif;
+    }
+
+    /* FOOTER */
+    footer{background:var(--dark2);padding:2.25rem 0;text-align:center;border-top:1px solid rgba(255,255,255,.06);}
+    .footer-links{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:.85rem;}
+    .footer-links a{color:rgba(255,255,255,.35);text-decoration:none;font-size:.78rem;transition:color .2s;}
+    .footer-links a:hover{color:rgba(255,255,255,.65);}
+    footer p{color:rgba(255,255,255,.2);font-size:.78rem;margin-top:.4rem;}
+    footer .dev{color:rgba(255,255,255,.15);font-size:.72rem;margin-top:.25rem;}
+    footer .dev a{color:rgba(255,255,255,.25);text-decoration:none;}
+    footer .dev a:hover{color:rgba(255,255,255,.5);}
+
+    @media(max-width:900px){
+      .nav-links,.nav-social{display:none!important;}
+      .burger{display:flex;}
+      .gallery-grid{columns:3 160px;}
+      .lb-btn{width:40px;height:40px;font-size:1.1rem;}
+    }
+    @media(max-width:560px){
+      .gallery-grid{columns:2 140px;}
+    }
+  </style>
 </head>
 <body>
-  
-  <section data-bs-version="5.1" class="menu menu2 cid-uoUXhXCdNt" once="menu" id="menu2-2h">
-    
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container-fluid">
-            <div class="navbar-brand">
-                
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7">Akrokick</a></span>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html">Strona główna</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="galeria.html">Galeria</a></li>
-                    
-                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#features16-1w">Prowadzący</a>
-                    </li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#timeline03-20">Zajęcia</a></li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#contacts1-1z">Kontakt</a></li></ul>
-                <div class="icons-menu">
-                    <a class="iconfont-wrapper" href="https://www.facebook.com/profile.php?id=61567168265481">
-                        <span class="p-2 mbr-iconfont socicon-facebook socicon"></span>
-                    </a>
-                    <a class="iconfont-wrapper" href="https://www.instagram.com/akrokick/" target="_blank">
-                        <span class="p-2 mbr-iconfont socicon-instagram socicon"></span>
-                    </a>
-                    
-                    
-                </div>
-                
-            </div>
-        </div>
-    </nav>
-</section>
 
-<section data-bs-version="5.1" class="gallery1 mbr-gallery cid-uu2kQymPKC" id="gallery01-2i">
-    
-    
-
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-12 content-head">
-                <div class="mb-5">
-                    <h3 class="mbr-section-title mbr-fonts-style align-center m-0 display-2"><strong>Galeria</strong></h3>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="row mbr-gallery">
-            <div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/3y6a8899-1150x1150.png" alt="Mobirise Website Builder" data-slide-to="0" data-bs-slide-to="0" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/3y6a8808-1150x1150.png" alt="Mobirise Website Builder" data-slide-to="1" data-bs-slide-to="1" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/3y6a8896-1150x1150.png" alt="Mobirise Website Builder" data-slide-to="2" data-bs-slide-to="2" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/3y6a8757-1150x1150.png" alt="Mobirise Website Builder" data-slide-to="3" data-bs-slide-to="3" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/eeb5edb8-d6a8-4361-8b59-22a7b1bd49cb.jpeg" alt="Mobirise Website Builder" data-slide-to="4" data-bs-slide-to="4" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/ded6bb70-b75a-4096-b070-107bec078ae1.jpeg" alt="Mobirise Website Builder" data-slide-to="5" data-bs-slide-to="5" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/97bd6b90-fb1f-44e5-8674-c0c243e0a70a.jpeg" alt="Mobirise Website Builder" data-slide-to="6" data-bs-slide-to="6" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div><div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/c3acb579-542c-4724-983b-159dd258c410.jpeg" alt="Mobirise Website Builder" data-slide-to="7" data-bs-slide-to="7" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/aac8880d-e663-43f7-a783-113b0c0b547a.jpeg" alt="Mobirise Website Builder" data-slide-to="8" data-bs-slide-to="8" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div><div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/36978678-28c2-44d6-8e7f-2e77e19fef6a.jpeg" alt="Mobirise Website Builder" data-slide-to="9" data-bs-slide-to="9" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div><div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/64d2d3fd-46b9-4dcd-949c-6fb2df49af74.jpeg" alt="Mobirise Website Builder" data-slide-to="10" data-bs-slide-to="10" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div><div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/58d87e2d-c1e3-454f-93e3-99b42dea85e9.jpeg" alt="Mobirise Website Builder" data-slide-to="11" data-bs-slide-to="11" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div><div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/3f298825-4735-4ce7-9b2e-8cc66521e005.jpeg" alt="Mobirise Website Builder" data-slide-to="12" data-bs-slide-to="12" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div><div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/2b71fbbf-f7ff-40a3-858c-88b701b85912.jpeg" alt="Mobirise Website Builder" data-slide-to="13" data-bs-slide-to="13" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div><div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/298a8d3a-91e6-4d91-8e8c-e40016c2c377.jpeg" alt="Mobirise Website Builder" data-slide-to="14" data-bs-slide-to="14" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div><div class="col-12 col-md-6 col-lg-3 item gallery-image">
-                <div class="item-wrapper mb-3" data-toggle="modal" data-bs-toggle="modal" data-target="#uOYv3XfCxY-modal" data-bs-target="#uOYv3XfCxY-modal">
-                    <img class="w-100" src="assets/images/18d6d812-b8a3-403f-8da2-6e4497c2cc76.jpeg" alt="Mobirise Website Builder" data-slide-to="15" data-bs-slide-to="15" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY">
-                    <div class="icon-wrapper">
-                        <span class="mobi-mbri mobi-mbri-search mbr-iconfont mbr-iconfont-btn"></span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-
-        <div class="modal mbr-slider" tabindex="-1" role="dialog" aria-hidden="true" id="uOYv3XfCxY-modal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="carousel slide" data-pause="false" data-bs-pause="false" id="lb-uOYv3XfCxY" data-interval="5000" data-bs-interval="5000">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="assets/images/3y6a8899-1150x1150.png" alt="Mobirise Website Builder">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/3y6a8808-1150x1150.png" alt="Mobirise Website Builder">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/3y6a8896-1150x1150.png" alt="Mobirise Website Builder">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/3y6a8757-1150x1150.png" alt="Mobirise Website Builder">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/eeb5edb8-d6a8-4361-8b59-22a7b1bd49cb.jpeg" alt="Mobirise Website Builder">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/ded6bb70-b75a-4096-b070-107bec078ae1.jpeg" alt="Mobirise Website Builder">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/97bd6b90-fb1f-44e5-8674-c0c243e0a70a.jpeg" alt="Mobirise Website Builder">
-                                </div><div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/c3acb579-542c-4724-983b-159dd258c410.jpeg" alt="Mobirise Website Builder">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/aac8880d-e663-43f7-a783-113b0c0b547a.jpeg" alt="Mobirise Website Builder">
-                                </div><div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/36978678-28c2-44d6-8e7f-2e77e19fef6a.jpeg" alt="Mobirise Website Builder">
-                                </div><div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/64d2d3fd-46b9-4dcd-949c-6fb2df49af74.jpeg" alt="Mobirise Website Builder">
-                                </div><div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/58d87e2d-c1e3-454f-93e3-99b42dea85e9.jpeg" alt="Mobirise Website Builder">
-                                </div><div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/3f298825-4735-4ce7-9b2e-8cc66521e005.jpeg" alt="Mobirise Website Builder">
-                                </div><div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/2b71fbbf-f7ff-40a3-858c-88b701b85912.jpeg" alt="Mobirise Website Builder">
-                                </div><div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/298a8d3a-91e6-4d91-8e8c-e40016c2c377.jpeg" alt="Mobirise Website Builder">
-                                </div><div class="carousel-item">
-                                    <img class="d-block w-100" src="assets/images/18d6d812-b8a3-403f-8da2-6e4497c2cc76.jpeg" alt="Mobirise Website Builder">
-                                </div>
-                            </div>
-                            <ol class="carousel-indicators">
-                                <li data-slide-to="0" data-bs-slide-to="0" class="active" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li>
-                                <li data-slide-to="1" data-bs-slide-to="1" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li>
-                                <li data-slide-to="2" data-bs-slide-to="2" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li>
-                                <li data-slide-to="3" data-bs-slide-to="3" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li>
-                                <li data-slide-to="4" data-bs-slide-to="4" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li><li data-slide-to="5" data-bs-slide-to="5" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li>
-                                <li data-slide-to="6" data-bs-slide-to="6" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li>
-                                <li data-slide-to="7" data-bs-slide-to="7" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li><li data-slide-to="8" data-bs-slide-to="8" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li><li data-slide-to="9" data-bs-slide-to="9" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li><li data-slide-to="10" data-bs-slide-to="10" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li><li data-slide-to="11" data-bs-slide-to="11" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li><li data-slide-to="12" data-bs-slide-to="12" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li><li data-slide-to="13" data-bs-slide-to="13" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li><li data-slide-to="14" data-bs-slide-to="14" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li><li data-slide-to="15" data-bs-slide-to="15" data-target="#lb-uOYv3XfCxY" data-bs-target="#lb-uOYv3XfCxY"></li>
-                                
-                            </ol>
-                            <a role="button" href="" class="close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close">
-                            </a>
-                            <a class="carousel-control-prev carousel-control" role="button" data-slide="prev" data-bs-slide="prev" href="#lb-uOYv3XfCxY">
-                                <span class="mobi-mbri mobi-mbri-arrow-prev" aria-hidden="true"></span>
-                                <span class="sr-only visually-hidden">Previous</span>
-                            </a>
-                            <a class="carousel-control-next carousel-control" role="button" data-slide="next" data-bs-slide="next" href="#lb-uOYv3XfCxY">
-                                <span class="mobi-mbri mobi-mbri-arrow-next" aria-hidden="true"></span>
-                                <span class="sr-only visually-hidden">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Akro<span>kick</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">O nas</a></li>
+      <li><a href="index.html#coaches">Prowadzący</a></li>
+      <li><a href="index.html#schedule">Zajęcia</a></li>
+      <li><a href="polkolonie.html">Półkolonie/Wycieczki</a></li>
+      <li><a href="index.html#contact">Kontakt</a></li>
+      <li><a href="galeria.html" class="active">Galeria</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:.9rem">
+      <div class="nav-social">
+        <a href="https://www.facebook.com/profile.php?id=61567168265481" target="_blank"><span class="socicon-facebook socicon"></span></a>
+        <a href="https://www.instagram.com/akrokick/" target="_blank"><span class="socicon-instagram socicon"></span></a>
+      </div>
+      <button class="burger" id="burgerBtn"><span></span><span></span><span></span></button>
     </div>
-</section>
+  </div>
+</nav>
 
-<section data-bs-version="5.1" class="footer3 cid-uOYmImytC7" once="footers" id="footer03-2s">
+<div id="mob-menu">
+  <button id="mob-close">✕</button>
+  <a href="index.html">Strona główna</a>
+  <a href="index.html#coaches">Prowadzący</a>
+  <a href="index.html#schedule">Zajęcia</a>
+  <a href="polkolonie.html">Półkolonie/Wycieczki</a>
+  <a href="index.html#contact">Kontakt</a>
+  <a href="galeria.html">Galeria</a>
+</div>
 
-        
+<div class="page-header">
+  <h1>Gale<span>ria</span></h1>
+  <p>Zajęcia, emocje i wspomnienia</p>
+  <div class="accent-line"></div>
+</div>
 
-    
+<div class="gallery-wrap">
+  <div class="gallery-grid" id="galleryGrid">
 
-    <div class="container">
-        <div class="row">
-            <div class="row-links">
-                <ul class="header-menu">
-                  
-                  
-                  
-                  
-                <li class="header-menu-item mbr-fonts-style display-5"><a href="politykaprywatnosci.html" class="text-success">Polityka Prywatności</a></li><li class="header-menu-item mbr-fonts-style display-5"><a href="page4.html" class="text-success text-primary">Regulamin</a></li><li class="header-menu-item mbr-fonts-style display-5"><a href="page3.html" class="text-success">RODO</a></li><li class="header-menu-item mbr-fonts-style display-5"><a href="page5.html" class="text-success text-primary">Standardy Ochrony Małoletnich</a></li></ul>
-              </div>
-
-            
-            
-        </div>
+    <div class="gallery-item" data-idx="0">
+      <img src="assets/images/3y6a8899-1150x1150.png" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
     </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
-  
- <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
-    <input name="animation" type="hidden">
-  </body>
+    <div class="gallery-item" data-idx="1">
+      <img src="assets/images/3y6a8808-1150x1150.png" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+    <div class="gallery-item" data-idx="2">
+      <img src="assets/images/3y6a8896-1150x1150.png" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+    <div class="gallery-item" data-idx="3">
+      <img src="assets/images/3y6a8757-1150x1150.png" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+    <div class="gallery-item" data-idx="4">
+      <img src="assets/images/eeb5edb8-d6a8-4361-8b59-22a7b1bd49cb.jpeg" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+    <div class="gallery-item" data-idx="5">
+      <img src="assets/images/ded6bb70-b75a-4096-b070-107bec078ae1.jpeg" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+    <div class="gallery-item" data-idx="6">
+      <img src="assets/images/97bd6b90-fb1f-44e5-8674-c0c243e0a70a.jpeg" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+    <div class="gallery-item" data-idx="7">
+      <img src="assets/images/c3acb579-542c-4724-983b-159dd258c410.jpeg" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+    <div class="gallery-item" data-idx="8">
+      <img src="assets/images/aac8880d-e663-43f7-a783-113b0c0b547a.jpeg" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+    <div class="gallery-item" data-idx="9">
+      <img src="assets/images/36978678-28c2-44d6-8e7f-2e77e19fef6a.jpeg" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+    <div class="gallery-item" data-idx="10">
+      <img src="assets/images/64d2d3fd-46b9-4dcd-949c-6fb2df49af74.jpeg" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+    <div class="gallery-item" data-idx="11">
+      <img src="assets/images/58d87e2d-c1e3-454f-93e3-99b42dea85e9.jpeg" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+    <div class="gallery-item" data-idx="12">
+      <img src="assets/images/3f298825-4735-4ce7-9b2e-8cc66521e005.jpeg" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+    <div class="gallery-item" data-idx="13">
+      <img src="assets/images/2b71fbbf-f7ff-40a3-858c-88b701b85912.jpeg" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+    <div class="gallery-item" data-idx="14">
+      <img src="assets/images/298a8d3a-91e6-4d91-8e8c-e40016c2c377.jpeg" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+    <div class="gallery-item" data-idx="15">
+      <img src="assets/images/18d6d812-b8a3-403f-8da2-6e4497c2cc76.jpeg" alt="Akrokick zajęcia">
+      <div class="overlay"><div class="overlay-icon">⊕</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="Zamknij">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Poprzednie">&#8592;</button>
+  <img src="" alt="" class="lb-img" id="lbImg">
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Następne">&#8594;</button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
+<footer>
+  <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem">
+    <div class="footer-links">
+      <a href="politykaprywatnosci.html">Polityka Prywatności</a>
+      <a href="page4.html">Regulamin</a>
+      <a href="page3.html">RODO</a>
+      <a href="page5.html">Standardy Ochrony Małoletnich</a>
+    </div>
+    <p>© 2025 Akrokick · Wiktoria Pawlusek &amp; Hubert Kozera</p>
+    <p class="dev">Strona wykonana przez <a href="mailto:bskubek@gmail.com">Bogdan Skubek</a></p>
+  </div>
+</footer>
+
+<script>
+  const images = [
+    'assets/images/3y6a8899-1150x1150.png',
+    'assets/images/3y6a8808-1150x1150.png',
+    'assets/images/3y6a8896-1150x1150.png',
+    'assets/images/3y6a8757-1150x1150.png',
+    'assets/images/eeb5edb8-d6a8-4361-8b59-22a7b1bd49cb.jpeg',
+    'assets/images/ded6bb70-b75a-4096-b070-107bec078ae1.jpeg',
+    'assets/images/97bd6b90-fb1f-44e5-8674-c0c243e0a70a.jpeg',
+    'assets/images/c3acb579-542c-4724-983b-159dd258c410.jpeg',
+    'assets/images/aac8880d-e663-43f7-a783-113b0c0b547a.jpeg',
+    'assets/images/36978678-28c2-44d6-8e7f-2e77e19fef6a.jpeg',
+    'assets/images/64d2d3fd-46b9-4dcd-949c-6fb2df49af74.jpeg',
+    'assets/images/58d87e2d-c1e3-454f-93e3-99b42dea85e9.jpeg',
+    'assets/images/3f298825-4735-4ce7-9b2e-8cc66521e005.jpeg',
+    'assets/images/2b71fbbf-f7ff-40a3-858c-88b701b85912.jpeg',
+    'assets/images/298a8d3a-91e6-4d91-8e8c-e40016c2c377.jpeg',
+    'assets/images/18d6d812-b8a3-403f-8da2-6e4497c2cc76.jpeg',
+  ];
+
+  let current = 0;
+  const lb     = document.getElementById('lightbox');
+  const lbImg  = document.getElementById('lbImg');
+  const lbCtr  = document.getElementById('lbCounter');
+
+  function openLb(idx) {
+    current = idx;
+    lbImg.src = images[current];
+    lbCtr.textContent = `${current + 1} / ${images.length}`;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function prev() {
+    current = (current - 1 + images.length) % images.length;
+    lbImg.src = images[current];
+    lbCtr.textContent = `${current + 1} / ${images.length}`;
+  }
+  function next() {
+    current = (current + 1) % images.length;
+    lbImg.src = images[current];
+    lbCtr.textContent = `${current + 1} / ${images.length}`;
+  }
+
+  document.querySelectorAll('.gallery-item').forEach(el => {
+    el.addEventListener('click', () => openLb(+el.dataset.idx));
+  });
+  document.getElementById('lbClose').onclick = closeLb;
+  document.getElementById('lbPrev').onclick  = prev;
+  document.getElementById('lbNext').onclick  = next;
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')      closeLb();
+    if (e.key === 'ArrowLeft')   prev();
+    if (e.key === 'ArrowRight')  next();
+  });
+
+  // mobile menu
+  const mob = document.getElementById('mob-menu');
+  document.getElementById('burgerBtn').onclick = () => mob.classList.add('open');
+  document.getElementById('mob-close').onclick  = () => mob.classList.remove('open');
+  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mob.classList.remove('open')));
+</script>
+</body>
 </html>
