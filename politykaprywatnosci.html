@@ -65,8 +65,9 @@
     .footer-links a:hover,.footer-links a.active{color:rgba(255,255,255,.75);}
     footer p{color:rgba(255,255,255,.25);font-size:.8rem;}
     footer .dev{color:rgba(255,255,255,.15);font-size:.72rem;margin-top:.25rem;}
-    footer .dev a{color:rgba(255,255,255,.25);text-decoration:none;}
-    footer .dev a:hover{color:rgba(255,255,255,.5);}
+    footer .dev a{display:inline-flex;align-items:center;gap:.35rem;color:rgba(255,255,255,.3);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:1px;transition:color .2s,border-color .2s;}
+    footer .dev a:hover{color:#0A66C2;border-color:rgba(10,102,194,.5);}
+    footer .dev a .socicon{font-size:.85rem;}
 
     @media(max-width:768px){.nav-links,.nav-social{display:none!important;}.burger{display:flex;}}
   </style>
@@ -200,7 +201,7 @@
       <a href="page5.html">Standardy Ochrony Małoletnich</a>
     </div>
     <p>© 2025 Akrokick · Wiktoria Pawlusek &amp; Hubert Kozera</p>
-    <p class="dev">Strona wykonana przez <a href="https://www.linkedin.com/in/bogdan-skubek-61b88a257/?locale=pl">Bogdan Skubek</a></p>
+    <p class="dev">Strona wykonana przez <a href="https://www.linkedin.com/in/bogdan-skubek-61b88a257/?locale=pl"><span class="socicon-linkedin socicon"></span>Bogdan Skubek</a></p>
   </div>
 </footer>
 

@@ -110,52 +110,143 @@
       overflow: hidden;
       background: var(--dark);
     }
-    /* zdjęcie pozycjonowane po prawej, naturalne proporcje */
+
+    /* Ken Burns wrapper */
+    .hero-bg { position: absolute; inset: 0; overflow: hidden; }
     .hero-bg-img {
-      position: absolute;
-      right: 0; top: 0;
-      height: 100%; width: 58%;
-      object-fit: cover;
-      object-position: top center;
-      filter: brightness(.38);
-      display: block;
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 28%;
+      filter: brightness(.38) saturate(1.1);
+      transform-origin: 50% 28%;
+      animation: kenBurns 14s ease-out forwards;
     }
-    /* gradient: ciemny po lewej (tekst), przeźroczysty po prawej (zdjęcie) */
+    @keyframes kenBurns {
+      from { transform: scale(1.0); }
+      to   { transform: scale(1.14); }
+    }
+
+    /* Cinematic multi-layer overlay */
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to right,
-        var(--dark) 28%,
-        rgba(15,15,26,.93) 46%,
-        rgba(15,15,26,.55) 68%,
-        rgba(15,15,26,.4) 100%);
+      background:
+        /* Ciemny panel po prawej – 1/4 strony */
+        linear-gradient(to left,
+          var(--dark)              0%,
+          var(--dark)             22%,
+          rgba(15,15,26,.7)       32%,
+          transparent             46%),
+        /* Czerwony blask za atletą */
+        radial-gradient(ellipse at 68% 30%, rgba(192,57,43,.45) 0%, transparent 44%),
+        /* Złoty ciepły akcent */
+        radial-gradient(ellipse at 65% 72%, rgba(245,158,11,.12) 0%, transparent 30%),
+        /* Ciemność od lewej (tekst) */
+        linear-gradient(to right,
+          rgba(15,15,26,.99) 0%,
+          rgba(15,15,26,.92) 30%,
+          rgba(15,15,26,.5)  58%,
+          rgba(15,15,26,.15) 78%,
+          transparent        90%),
+        /* Fade od dołu */
+        linear-gradient(to top,
+          rgba(15,15,26,.98) 0%,
+          rgba(15,15,26,.45) 15%,
+          transparent        36%);
     }
+    /* Bottom fade into next section */
+    .hero::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 160px;
+      background: linear-gradient(to bottom, transparent, var(--dark));
+      pointer-events: none; z-index: 1;
+    }
+
     .hero-content {
       position: relative; z-index: 2;
-      padding: 7rem 2rem 4rem 6vw;
+      padding: 7.5rem 2rem 5rem 6vw;
       display: flex; flex-direction: column; align-items: flex-start;
       max-width: 680px;
     }
+
+    /* Animated eyebrow badge */
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      padding: .38rem 1.1rem;
+      background: rgba(192,57,43,.15);
+      border: 1px solid rgba(192,57,43,.4);
+      border-radius: 50px;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 1.5rem;
+      animation: slideUp .6s ease-out .2s both;
+    }
+    .hero-eyebrow .dot {
+      width: 6px; height: 6px; flex-shrink: 0;
+      background: var(--red); border-radius: 50%;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%     { opacity: .35; transform: scale(.65); }
+    }
+
     .hero-logo {
-      width: 130px; height: 130px;
+      width: 110px; height: 110px;
       object-fit: cover; border-radius: 50%;
-      border: 3px solid rgba(255,255,255,.18);
-      margin-bottom: 1.75rem;
-      box-shadow: 0 8px 40px rgba(0,0,0,.5);
+      border: 3px solid rgba(255,255,255,.2);
+      margin-bottom: 1.6rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,.6), 0 0 0 7px rgba(192,57,43,.1);
+      animation: zoomIn .7s ease-out .45s both;
     }
+
     .hero-title {
-      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      font-size: clamp(4.5rem, 11vw, 10rem);
       font-weight: 900; color: #fff;
-      line-height: 1; letter-spacing: -2px;
-      margin-bottom: 1.1rem;
+      line-height: .88; letter-spacing: -3px;
+      animation: slideUp .85s ease-out .75s both;
     }
-    .hero-title .r { color: var(--red); }
+    .hero-title .r { color: var(--red); display: block; }
+
+    /* Red-gold accent line that expands */
+    .hero-accent {
+      width: 0; height: 4px;
+      background: linear-gradient(to right, var(--red), var(--gold));
+      border-radius: 2px;
+      margin: 1.2rem 0 1.4rem;
+      animation: expandLine .7s ease-out 1.25s both;
+    }
+
     .hero-sub {
       font-size: clamp(.95rem, 2.2vw, 1.15rem);
-      color: rgba(255,255,255,.72);
-      max-width: 480px; line-height: 1.75;
+      color: rgba(255,255,255,.68);
+      max-width: 460px; line-height: 1.78;
       font-weight: 300; margin-bottom: 2.5rem;
+      animation: fadeUp .7s ease-out 1.5s both;
     }
-    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp .6s ease-out 1.8s both;
+    }
+
+    /* Entrance keyframes */
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(.78); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes expandLine {
+      from { width: 0; opacity: 0; }
+      to   { width: 72px; opacity: 1; }
+    }
+
     .btn-red {
       padding: .85rem 2.1rem;
       background: var(--red); color: #fff;
@@ -167,12 +258,12 @@
     .btn-red:hover {
       background: var(--red-dark); color: #fff;
       transform: translateY(-3px);
-      box-shadow: 0 10px 28px rgba(192,57,43,.4);
+      box-shadow: 0 10px 28px rgba(192,57,43,.5);
     }
     .btn-ghost {
       padding: .85rem 2.1rem;
       background: transparent; color: #fff;
-      border: 2px solid rgba(255,255,255,.45);
+      border: 2px solid rgba(255,255,255,.4);
       border-radius: 50px;
       font-weight: 600; font-size: .9rem;
       text-decoration: none; text-transform: uppercase; letter-spacing: .8px;
@@ -183,22 +274,95 @@
       background: rgba(255,255,255,.1);
       transform: translateY(-3px);
     }
+
     .hero-scroll {
-      position: absolute; bottom: 2.2rem; left: 50%;
+      position: absolute; bottom: 2.5rem; left: 50%;
       transform: translateX(-50%);
-      color: rgba(255,255,255,.35);
-      font-size: .7rem; letter-spacing: 3px;
-      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      font-size: .68rem; letter-spacing: 3px; text-transform: uppercase;
       display: flex; flex-direction: column; align-items: center; gap: .5rem;
-      animation: bob 2.2s ease-in-out infinite;
+      z-index: 2;
+      animation: fadeUp .6s ease-out 2.3s both;
     }
     .hero-scroll::after {
       content: ''; width: 1px; height: 36px;
-      background: rgba(255,255,255,.25);
+      background: linear-gradient(to bottom, rgba(255,255,255,.35), transparent);
+      animation: bob 2.2s ease-in-out infinite;
     }
     @keyframes bob {
-      0%,100% { transform: translateX(-50%) translateY(0); }
-      50%      { transform: translateX(-50%) translateY(7px); }
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(8px); }
+    }
+
+    /* ── HERO DECORATIONS ─────────────────────── */
+    .hero-watermark {
+      position: absolute; right: -2vw; top: 50%;
+      transform: translateY(-50%);
+      font-size: min(26vw, 22rem); font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,.038);
+      letter-spacing: -6px; line-height: 1;
+      pointer-events: none; user-select: none; z-index: 2;
+      white-space: nowrap;
+    }
+    .hero-corner {
+      position: absolute; width: 28px; height: 28px; z-index: 3;
+      animation: fadeUp .5s ease-out 2.4s both;
+    }
+    .hero-corner--tl { top: 1.5rem; left: 1.5rem;
+      border-top: 2px solid rgba(192,57,43,.5); border-left: 2px solid rgba(192,57,43,.5); }
+    .hero-corner--tr { top: 1.5rem; right: 1.5rem;
+      border-top: 2px solid rgba(192,57,43,.5); border-right: 2px solid rgba(192,57,43,.5); }
+    .hero-corner--bl { bottom: 4.2rem; left: 1.5rem;
+      border-bottom: 2px solid rgba(192,57,43,.5); border-left: 2px solid rgba(192,57,43,.5); }
+    .hero-corner--br { bottom: 4.2rem; right: 1.5rem;
+      border-bottom: 2px solid rgba(192,57,43,.5); border-right: 2px solid rgba(192,57,43,.5); }
+    .hero-side-text {
+      position: absolute; right: 1.4rem; top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      display: flex; align-items: center; gap: .8rem;
+      z-index: 3; white-space: nowrap;
+      animation: fadeUp .6s ease-out 2.3s both;
+    }
+    .hero-side-text > span {
+      font-size: .58rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(255,255,255,.2);
+    }
+    .hero-side-text .sep { color: var(--red); opacity: .55; }
+
+    /* ── STATS STRIP ───────────────────────────── */
+    .stats-strip {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,.05);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      padding: 2.75rem 0;
+    }
+    .stats-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 1.5rem;
+      display: grid; grid-template-columns: repeat(4,1fr);
+    }
+    .stat-item {
+      text-align: center; padding: .75rem 1rem;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 2.9rem; font-weight: 900; color: #fff;
+      line-height: 1; letter-spacing: -1.5px; margin-bottom: .4rem;
+    }
+    .stat-sfx { color: var(--red); }
+    .stat-stars { color: var(--gold); font-size: 1.05rem; letter-spacing: 3px; }
+    .stat-label {
+      font-size: .65rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+    }
+    @media(max-width:640px) {
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,.08); }
+      .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,.08); border-right: none; }
     }
 
     /* ── SHARED SECTION STYLES ────────────────── */
@@ -401,6 +565,15 @@
     }
     .footer-links a:hover { color: rgba(255,255,255,.65); }
     footer p { color: rgba(255,255,255,.25); font-size: .8rem; }
+    footer .dev { color: rgba(255,255,255,.15); font-size: .72rem; margin-top: .25rem; }
+    footer .dev a {
+      display: inline-flex; align-items: center; gap: .35rem;
+      color: rgba(255,255,255,.3); text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      padding-bottom: 1px; transition: color .2s, border-color .2s;
+    }
+    footer .dev a:hover { color: #0A66C2; border-color: rgba(10,102,194,.5); }
+    footer .dev a .socicon { font-size: .85rem; }
 
     /* ── RESPONSIVE ────────────────────────────── */
     @media (max-width: 768px) {
@@ -411,19 +584,22 @@
       .about-cols { display: flex; flex-direction: column; }
       .about-cols .col-img { order: -1; margin-bottom: 2rem; }
 
-      /* hero mobile: obraz jako pełne tło */
-      .hero-bg-img { width: 100%; filter: brightness(.22); }
+      /* hero mobile */
+      .hero-bg-img { filter: brightness(.25) saturate(1.15); }
       .hero-overlay {
-        background: linear-gradient(to bottom,
-          rgba(15,15,26,.7) 0%,
-          rgba(15,15,26,.4) 50%,
-          rgba(15,15,26,.8) 100%);
+        background:
+          radial-gradient(ellipse at center 40%, rgba(192,57,43,.2) 0%, transparent 60%),
+          linear-gradient(to bottom,
+            rgba(15,15,26,.72) 0%,
+            rgba(15,15,26,.38) 45%,
+            rgba(15,15,26,.88) 100%);
       }
       .hero-content {
         align-items: center; text-align: center;
-        padding: 7rem 1.5rem 4rem;
+        padding: 7.5rem 1.5rem 5rem;
       }
       .hero-btns { justify-content: center; }
+      .hero-accent { margin-left: auto; margin-right: auto; }
     }
     @media (min-width: 769px) {
       .about-cols { display: grid; grid-template-columns: 5fr 7fr; gap: 3.5rem; align-items: center; }
@@ -491,12 +667,26 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <img src="assets/images/3y6a8896-1150x1150.png" alt="" class="hero-bg-img" aria-hidden="true">
+  <div class="hero-bg">
+    <img src="assets/images/3y6a8896-1150x1150.png" alt="" class="hero-bg-img" aria-hidden="true">
+  </div>
   <div class="hero-overlay"></div>
+  <div class="hero-watermark" aria-hidden="true">AK</div>
+  <div class="hero-corner hero-corner--tl"></div>
+  <div class="hero-corner hero-corner--tr"></div>
+  <div class="hero-corner hero-corner--bl"></div>
+  <div class="hero-corner hero-corner--br"></div>
+  <div class="hero-side-text" aria-hidden="true">
+    <span>Akrobatyka</span><span class="sep">·</span>
+    <span>Kickboxing</span><span class="sep">·</span>
+    <span>Gimnastyka</span>
+  </div>
   <div class="hero-content">
+    <div class="hero-eyebrow"><span class="dot"></span>Klub sportowy dla dzieci i młodzieży</div>
     <img src="assets/images/logo-2769x2711.jpg" alt="Akrokick logo" class="hero-logo">
     <h1 class="hero-title">Akro<span class="r">kick</span></h1>
-    <p class="hero-sub">Zajęcia sportowe z elementami akrobatyki, gimnastyki i sztuk walki. Dołącz do naszego klubu i odkryj swoje możliwości!</p>
+    <div class="hero-accent"></div>
+    <p class="hero-sub">Akrobatyka, gimnastyka i kickboxing dla dzieci od 4 lat. Dołącz i odkryj swoje możliwości!</p>
     <div class="hero-btns">
       <a href="#schedule" class="btn-red">Sprawdź zajęcia</a>
       <a href="#contact" class="btn-ghost">Skontaktuj się</a>
@@ -504,6 +694,28 @@
   </div>
   <div class="hero-scroll">Przewiń</div>
 </section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num"><span class="stat-count" data-target="50">50</span><span class="stat-sfx">+</span></div>
+      <div class="stat-label">Uczestników</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span class="stat-count" data-target="3">3</span></div>
+      <div class="stat-label">Dyscypliny</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span class="stat-count" data-target="3">3</span></div>
+      <div class="stat-label">Lokalizacji</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span class="stat-stars">★★★★★</span></div>
+      <div class="stat-label">Ocena rodziców</div>
+    </div>
+  </div>
+</div>
 
 <!-- OFFERS -->
 <section class="offers sec-pad" id="offers">
@@ -543,7 +755,7 @@
         <p class="label">Kim jesteśmy</p>
         <h2 class="sec-title">Pasja do sportu,<br>miłość do nauczania</h2>
         <div class="about-body">
-          <p>Cześć! Jesteśmy młodym, ambitnym duetem pasjonatów sportu. Ja, 25-letni student ratownictwa medycznego, oraz moja dziewczyna Wiktoria, 24-letnia absolwentka psychologii pracująca w szkole podstawowej. Wiktoria ma doświadczenie w pracy z młodzieżą, a jej wiedza psychologiczna pozwala jej lepiej rozumieć potrzeby dzieci.</p>
+          <p>Cześć! Jesteśmy młodym, ambitnym duetem pasjonatów sportu. Ja, <span id="age-hubert-about"></span>-letni student ratownictwa medycznego, oraz moja dziewczyna Wiktoria, <span id="age-wiktoria-about"></span>-letnia absolwentka psychologii pracująca w szkole podstawowej. Wiktoria ma doświadczenie w pracy z młodzieżą, a jej wiedza psychologiczna pozwala jej lepiej rozumieć potrzeby dzieci.</p>
           <p>Sport towarzyszy nam od najmłodszych lat. Trenuję sztuki walki (boks, muay thai, karate), a Wiktoria od lat angażuje się w taniec, gimnastykę i sztuki walki. Jako samouki w akrobatyce, czerpiemy wiedzę z odbytych szkoleń z metodyki nauczania, które prowadzą doświadczeni trenerzy.</p>
           <p>Razem tworzymy przyjazne i inspirujące środowisko. Dzięki mojemu przeszkoleniu z pierwszej pomocy oraz wiedzy psychologicznej Wiktorii, nasze zajęcia są bezpieczne i oferują wsparcie emocjonalne.</p>
         </div>
@@ -743,7 +955,7 @@
       <a href="page5.html">Standardy Ochrony Małoletnich</a>
     </div>
     <p>© 2025 Akrokick · Wiktoria Pawlusek &amp; Hubert Kozera</p>
-    <p style="color:rgba(255,255,255,.15);font-size:.72rem;margin-top:.25rem">Strona wykonana przez <a href="https://www.linkedin.com/in/bogdan-skubek-61b88a257/?locale=pl" style="color:rgba(255,255,255,.25);text-decoration:none">Bogdan Skubek</a></p>
+    <p class="dev">Strona wykonana przez <a href="https://www.linkedin.com/in/bogdan-skubek-61b88a257/?locale=pl"><span class="socicon-linkedin socicon"></span>Bogdan Skubek</a></p>
   </div>
 </footer>
 
@@ -762,6 +974,8 @@
   }
   document.getElementById('age-wiktoria').textContent = polishAge(calcAge(2000, 4, 27));
   document.getElementById('age-hubert').textContent   = polishAge(calcAge(1999, 8, 20));
+  document.getElementById('age-wiktoria-about').textContent = calcAge(2000, 4, 27);
+  document.getElementById('age-hubert-about').textContent   = calcAge(1999, 8, 20);
 
   // Navbar scroll
   const nav = document.getElementById('nav');
@@ -778,6 +992,25 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Stats counter animation
+  let counted = false;
+  const statsEl = document.querySelector('.stats-strip');
+  if (statsEl) {
+    new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting || counted) return;
+      counted = true;
+      document.querySelectorAll('.stat-count').forEach(el => {
+        const target = +el.dataset.target, dur = 1600, t0 = performance.now();
+        const tick = now => {
+          const p = Math.min((now - t0) / dur, 1);
+          el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target);
+          if (p < 1) requestAnimationFrame(tick); else el.textContent = target;
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: .5 }).observe(statsEl);
+  }
 </script>
 </body>
 </html>
